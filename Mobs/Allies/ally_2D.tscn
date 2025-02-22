@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgx5mxks7ritw"]
+
+[ext_resource type="Script" path="res://Mobs/Allies/ally_spawner.gd" id="1_625bw"]
+[ext_resource type="Texture2D" uid="uid://bqwybpwumhmu0" path="res://0x72_DungeonTilesetII_v1.7/frames/ogre_idle_anim_f0.png" id="2_likyr"]
+[ext_resource type="Texture2D" uid="uid://b6148gpxho1y1" path="res://0x72_DungeonTilesetII_v1.7/frames/ogre_idle_anim_f1.png" id="3_gntce"]
+[ext_resource type="Texture2D" uid="uid://r5brtgmokb7h" path="res://0x72_DungeonTilesetII_v1.7/frames/ogre_idle_anim_f2.png" id="4_4x2iu"]
+[ext_resource type="Texture2D" uid="uid://dev65qnl01260" path="res://0x72_DungeonTilesetII_v1.7/frames/ogre_idle_anim_f3.png" id="5_2u50s"]
+[ext_resource type="Texture2D" uid="uid://cg7gjjt3slatv" path="res://0x72_DungeonTilesetII_v1.7/frames/ogre_run_anim_f0.png" id="6_1ims6"]
+[ext_resource type="Texture2D" uid="uid://bksrvfos482eg" path="res://0x72_DungeonTilesetII_v1.7/frames/ogre_run_anim_f1.png" id="7_3o06v"]
+[ext_resource type="Texture2D" uid="uid://50117qmb5gy" path="res://0x72_DungeonTilesetII_v1.7/frames/ogre_run_anim_f2.png" id="8_haeae"]
+[ext_resource type="Texture2D" uid="uid://pr72qnuuysyn" path="res://0x72_DungeonTilesetII_v1.7/frames/ogre_run_anim_f3.png" id="9_6k1wa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2wvd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_likyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gntce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4x2iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2u50s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1ims6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3o06v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_haeae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6k1wa")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5a42w"]
+radius = 9.0
+height = 28.0
+
+[node name="BiggieChungus" type="CharacterBody2D"]
+script = ExtResource("1_625bw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_e2wvd")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_5a42w")
