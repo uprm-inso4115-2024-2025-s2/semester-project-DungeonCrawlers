@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bps5kp74nts10" path="res://0x72_DungeonTilesetII_v1.7/atlas_walls_low-16x16.png" id="5_uof8d"]
 [ext_resource type="Texture2D" uid="uid://dcb5nu1sl5rfu" path="res://0x72_DungeonTilesetII_v1.7/atlas_floor-16x16.png" id="6_keu4d"]
 [ext_resource type="PackedScene" uid="uid://b1j7y1cy7nvv4" path="res://canvas_layer.tscn" id="8_5uf2j"]
-[ext_resource type="TileSet" uid="uid://bcxb7hepk8ybn" path="res://high_walls.tres" id="7_k2l3n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6ouf"]
 texture = ExtResource("5_uof8d")
@@ -734,8 +733,6 @@ terrain_set_0/terrain_0/name = "walls"
 terrain_set_0/terrain_0/color = Color(0.673474, 0.170925, 0.212547, 1)
 terrain_set_0/terrain_1/name = "floor"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
-terrain_set_0/terrain_2/name = "highWalls"
-terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_r6ouf")
 sources/1 = SubResource("TileSetAtlasSource_ok0vr")
 sources/4 = SubResource("TileSetAtlasSource_fhi7q")
@@ -782,10 +779,6 @@ position = Vector2(184, 144)
 limit_smoothed = true
 editor_draw_limits = true
 
-[node name="Tilemap_walls" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABAAIABAABAAAAAAABAAMABAAAAAEAAAABAAQABAAAAAEAAAABAAUABAAAAAEAAAABAAYABAAAAAIAAAACAAIABAACAAMAAAADAAIABAACAAAAAAADAAMABAAAAAIAAAAEAAIABAADAAMAAAA=")
-tile_set = SubResource("TileSet_mnhlw")
-
-[node name="HighWall_TileMap" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAEAAMAAAAAAAIAAAAEAAIAAAAAAAMAAAA=")
-tile_set = ExtResource("7_k2l3n")
+[node name="CanvasLayer" parent="." node_paths=PackedStringArray("player", "tileMap") instance=ExtResource("8_5uf2j")]
+player = NodePath("../Player")
+tileMap = NodePath("../Walls+Floor")
