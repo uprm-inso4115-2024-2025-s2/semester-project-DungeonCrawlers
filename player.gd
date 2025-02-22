@@ -2,16 +2,16 @@ extends CharacterBody2D
 
 @export var speed = 50
 
-@onready var target = position
 
 func _input(event):
-	if event.is_action_pressed("click"):
-		target = get_global_mouse_position()
+	pass
 
 func _physics_process(delta):
-	velocity = position.direction_to(target) * speed
-	if position.distance_to(target) > 1:
-		move_and_slide()
-	else:
-		velocity = Vector2.ZERO  # Stop movement when close to the target
-	
+	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
+		position.x += speed*delta
+	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
+		position.y -= speed*delta
+	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
+		position.y += speed*delta
+	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
+		position.x -= speed*delta
