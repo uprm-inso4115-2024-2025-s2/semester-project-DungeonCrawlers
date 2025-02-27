@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cjk6ugy6xve2s"]
+[gd_scene load_steps=19 format=4 uid="uid://cjk6ugy6xve2s"]
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bps5kp74nts10" path="res://0x72_DungeonTilesetII_v1.7/atlas_walls_low-16x16.png" id="5_uof8d"]
 [ext_resource type="Texture2D" uid="uid://dcb5nu1sl5rfu" path="res://0x72_DungeonTilesetII_v1.7/atlas_floor-16x16.png" id="6_keu4d"]
 [ext_resource type="PackedScene" uid="uid://b1j7y1cy7nvv4" path="res://canvas_layer.tscn" id="8_5uf2j"]
+[ext_resource type="Texture2D" uid="uid://dauvb61drlds7" path="res://Sprites/weapon_baton_with_spikes.png" id="8_t1qux"]
+[ext_resource type="Texture2D" uid="uid://d0v30uu8qrp6r" path="res://Sprites/weapon_axe.png" id="9_yhmry"]
+[ext_resource type="Texture2D" uid="uid://6y1c3jlsogwj" path="res://Sprites/weapon_big_hammer.png" id="10_esu3h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6ouf"]
 texture = ExtResource("5_uof8d")
@@ -737,6 +740,25 @@ sources/0 = SubResource("TileSetAtlasSource_r6ouf")
 sources/1 = SubResource("TileSetAtlasSource_ok0vr")
 sources/4 = SubResource("TileSetAtlasSource_fhi7q")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jurpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_t1qux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yhmry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_esu3h")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qwp26"]
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_ghkhd")
 
@@ -779,6 +801,26 @@ position = Vector2(184, 144)
 limit_smoothed = true
 editor_draw_limits = true
 
+[node name="AttackSprite" type="AnimatedSprite2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_jurpl")
+animation = &"attack"
+frame = 1
+speed_scale = 0.5
+
+[node name="AttackArea" type="Area2D" parent="Player/AttackSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/AttackSprite/AttackArea"]
+shape = SubResource("CircleShape2D_qwp26")
+
 [node name="CanvasLayer" parent="." node_paths=PackedStringArray("player", "tileMap") instance=ExtResource("8_5uf2j")]
 player = NodePath("../Player")
 tileMap = NodePath("../Walls+Floor")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="body_entered" from="Player/AttackSprite/AttackArea" to="Player" method="_on_attack_area_body_entered"]
