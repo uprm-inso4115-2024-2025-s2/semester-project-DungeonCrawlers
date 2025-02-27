@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://cm7leo13cucj8"]
+
+[ext_resource type="Texture2D" uid="uid://cmi1dxcj2ph86" path="res://0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f0.png" id="1_dguef"]
+[ext_resource type="Texture2D" uid="uid://chpda2g2ewdh0" path="res://0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f1.png" id="2_e8xrq"]
+[ext_resource type="Texture2D" uid="uid://ikdksd7qk6fh" path="res://0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f2.png" id="3_4lc4o"]
+[ext_resource type="Texture2D" uid="uid://7k6fnmrfbqrq" path="res://0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f3.png" id="4_sjw5a"]
+[ext_resource type="Texture2D" uid="uid://bh7xt3naaabqk" path="res://0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f0.png" id="5_lo42r"]
+[ext_resource type="Texture2D" uid="uid://c05oscr7p7omu" path="res://0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f1.png" id="6_wm7pt"]
+[ext_resource type="Texture2D" uid="uid://cyfhxe4k58q2" path="res://0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f2.png" id="7_q3o7m"]
+[ext_resource type="Texture2D" uid="uid://b86d162t8oasq" path="res://0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f3.png" id="8_gm4jg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0p8uc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dguef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e8xrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4lc4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sjw5a")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_lo42r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wm7pt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q3o7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gm4jg")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twdqe"]
+radius = 5.0
+height = 24.0
+
+[node name="Demon" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0p8uc")
+animation = &"Run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_twdqe")

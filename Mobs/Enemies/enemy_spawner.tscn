@@ -6,13 +6,13 @@
 script = ExtResource("1_upbat")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(200, -50)
+position = Vector2(228, 84)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(150, -50)
+position = Vector2(266, 84)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(91, -44)
+position = Vector2(114, 82)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

@@ -70,6 +70,7 @@ texture = ExtResource("12_l6p0s")
 
 [resource]
 physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
 sources/9 = SubResource("TileSetAtlasSource_gsgb2")
 sources/10 = SubResource("TileSetAtlasSource_jyms7")
 sources/11 = SubResource("TileSetAtlasSource_77bi5")
