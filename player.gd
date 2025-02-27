@@ -13,23 +13,20 @@ var is_moving = false
 var last_direction = Vector2.RIGHT 
 
 func _input(event):
-	if event.is_action_pressed("click"):
-		target = get_global_mouse_position()
-	
+
 	if event.is_action_pressed("attack") and not attacking:
 		start_attack()
-
 func _physics_process(delta):
-	if not attacking:
-		if position.distance_to(target) > 1:
-			is_moving = true
-			last_direction = position.direction_to(target).normalized()
-			velocity = last_direction * speed
-		else:
-			is_moving = false
-			velocity = Vector2.ZERO  
-	move_and_slide()
+	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
+		position.x += speed*delta
+	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
+		position.y -= speed*delta
+	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
+		position.y += speed*delta
+	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
+		position.x -= speed*delta
 
+	move_and_slide()
 func start_attack():
 	attacking = true  
 	attack_sprite.visible = true  
