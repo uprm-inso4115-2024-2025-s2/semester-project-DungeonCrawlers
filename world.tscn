@@ -1,4 +1,6 @@
-[gd_scene load_steps=19 format=4 uid="uid://cjk6ugy6xve2s"]
+
+[gd_scene load_steps=21 format=4 uid="uid://cjk6ugy6xve2s"]
+
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -7,7 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cm7leo13cucj8" path="res://Mobs/EnemyMobs/node_2d.tscn" id="3_be4mt"]
 [ext_resource type="Texture2D" uid="uid://xld4tpa6fi25" path="res://0x72_DungeonTilesetII_v1.7/atlas_walls_high-16x32.png" id="5_ry250"]
 [ext_resource type="Texture2D" uid="uid://bps5kp74nts10" path="res://0x72_DungeonTilesetII_v1.7/atlas_walls_low-16x16.png" id="5_uof8d"]
+
+[ext_resource type="PackedScene" uid="uid://cyqs74exlvuc1" path="res://Mobs/Enemies/enemy_spawner.tscn" id="6_ggghl"]
 [ext_resource type="Texture2D" uid="uid://dcb5nu1sl5rfu" path="res://0x72_DungeonTilesetII_v1.7/atlas_floor-16x16.png" id="6_keu4d"]
+[ext_resource type="PackedScene" uid="uid://c6pm4gfi87tca" path="res://Mobs/Allies/ally_spawner.tscn" id="7_qay8k"]
+
 [ext_resource type="PackedScene" uid="uid://b1j7y1cy7nvv4" path="res://canvas_layer.tscn" id="8_5uf2j"]
 [ext_resource type="Texture2D" uid="uid://dauvb61drlds7" path="res://Sprites/weapon_baton_with_spikes.png" id="8_t1qux"]
 [ext_resource type="Texture2D" uid="uid://d0v30uu8qrp6r" path="res://Sprites/weapon_axe.png" id="9_yhmry"]
@@ -762,6 +768,9 @@ animations = [{
 [node name="World" type="Node2D"]
 script = ExtResource("1_ghkhd")
 
+metadata/_edit_vertical_guides_ = [114.0]
+
+
 [node name="Floor" type="TileMapLayer" parent="."]
 texture_filter = 1
 position = Vector2(64, 80)
@@ -783,11 +792,13 @@ tile_set = SubResource("TileSet_mnk2f")
 collision_visibility_mode = 1
 
 [node name="BiggieChungus" parent="." instance=ExtResource("2_qrjl8")]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(80, 208)
 
 [node name="Demon" parent="." instance=ExtResource("3_be4mt")]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(280, 216)
@@ -796,6 +807,9 @@ position = Vector2(280, 216)
 z_index = 1
 texture_filter = 1
 position = Vector2(184, 144)
+
+[node name="MobSpawning" type="Camera2D" parent="Player"]
+limit_smoothed = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_smoothed = true
@@ -812,6 +826,11 @@ speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/AttackSprite/AttackArea"]
 shape = SubResource("CircleShape2D_qwp26")
+
+
+[node name="EnemySpawner" parent="." instance=ExtResource("6_ggghl")]
+
+[node name="AllySpawner" parent="." instance=ExtResource("7_qay8k")]
 
 [node name="CanvasLayer" parent="." node_paths=PackedStringArray("player", "tileMap") instance=ExtResource("8_5uf2j")]
 player = NodePath("../Player")
