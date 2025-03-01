@@ -61,6 +61,20 @@ animation = &"Run"
 frame = 1
 frame_progress = 0.677024
 
+[node name="BackgroundBar" type="ColorRect" parent="AnimatedSprite2D"]
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -13.0
+color = Color(0, 0, 0, 1)
+
+[node name="ForegroundBar" type="ColorRect" parent="AnimatedSprite2D"]
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -13.0
+color = Color(0, 1, 0, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 rotation = 1.5708

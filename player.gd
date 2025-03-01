@@ -61,10 +61,7 @@ func _on_AttackArea_body_entered(body)->void:
 func get_player_health()->int:
 	return player_health
 func set_player_health(Attack_incoming)->void:
-	if(0>(player_health - Attack_incoming)):
-		player_health = 0
-	else:
-		player_health = player_health - Attack_incoming
+	player_health = max(0, player_health - Attack_incoming)
 func get_player_attack()->int:
 	return player_attack
 	

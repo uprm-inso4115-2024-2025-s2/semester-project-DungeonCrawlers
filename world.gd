@@ -15,9 +15,9 @@ func _process(delta):
 			var distance = Player.global_position.distance_to(demon.global_position)
 			
 			if distance <= attack_distance_player:
-				print(demon.get_Demon_health())
 				demon.set_Demon_health(Player.get_player_attack())
-				print(demon.get_Demon_health())
+				demon.update_health(demon.get_Demon_health())
+				
 
 		# Set cooldown timestamp
 		player_attack_cooldown = current_time  
@@ -34,9 +34,8 @@ func _process(delta):
 	if nearest_demon:
 		if nearest_demon not in enemy_attack_cooldowns or current_time - enemy_attack_cooldowns[nearest_demon] >= 1.0:
 			# Only the nearest demon attacks
-			print(Player.get_player_health())
 			Player.set_player_health(nearest_demon.get_Demon_attack())
-			print(Player.get_player_health())
+			$Player/PlayerHealthBar.update_health(Player.get_player_health())
 
 			# Update the cooldown timer for this demon
 			enemy_attack_cooldowns[nearest_demon] = current_time
