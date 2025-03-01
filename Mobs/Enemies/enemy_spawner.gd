@@ -6,6 +6,7 @@ var count = 0
 var demon_scene := preload("res://Mobs/Enemies/enemy_2d.tscn")
 var spawn_points := []
 var spawned_demons := []  # List to store demons
+var HealthBars := []
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
@@ -22,5 +23,5 @@ func _on_timer_timeout() -> void:
 	main.add_child(demon)
 	spawned_demons.append(demon)
 	count +=1
-	if count>=3:
+	if count>=4:
 		$Timer.stop()
