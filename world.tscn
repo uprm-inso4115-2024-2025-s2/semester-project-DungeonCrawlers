@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=21 format=4 uid="uid://cjk6ugy6xve2s"]
+
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -824,6 +826,7 @@ speed_scale = 0.5
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Weapon"]
 position = Vector2(-386, -292)
 scale = Vector2(2, 2)
+
 
 [node name="PlayerHealthBar" parent="Player" instance=ExtResource("12_vhryo")]
 
