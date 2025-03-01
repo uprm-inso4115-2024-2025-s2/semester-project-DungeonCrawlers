@@ -759,8 +759,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2dbl"]
-size = Vector2(20, 40)
+[sub_resource type="CircleShape2D" id="CircleShape2D_qwp26"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ghkhd")
@@ -810,27 +809,19 @@ limit_smoothed = true
 limit_smoothed = true
 editor_draw_limits = true
 
-[node name="Weapon" type="Sprite2D" parent="Player"]
-texture_filter = 1
-position = Vector2(9, 2)
+[node name="AttackSprite" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(8, 2)
 scale = Vector2(0.5, 0.5)
-
-[node name="AttackAnimation" type="AnimatedSprite2D" parent="Player/Weapon"]
-texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jurpl")
 animation = &"attack"
-frame = 1
+frame = 2
 frame_progress = 0.793383
 speed_scale = 0.5
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Weapon"]
-position = Vector2(-386, -292)
-scale = Vector2(2, 2)
+[node name="AttackArea" type="Area2D" parent="Player/AttackSprite"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Weapon/CharacterBody2D"]
-position = Vector2(193, 146)
-scale = Vector2(0.25, 0.25)
-shape = SubResource("RectangleShape2D_l2dbl")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/AttackSprite/AttackArea"]
+shape = SubResource("CircleShape2D_qwp26")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_ggghl")]
 
@@ -845,3 +836,5 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[connection signal="body_entered" from="Player/AttackSprite/AttackArea" to="Player" method="_on_attack_area_body_entered"]

@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 @export var speed = 50
-@export var attack_damage = 10
-@export var attack_offset = 10 
+@export var attack_offset = 0
+var player_health = 100
+var player_attack = 25
 
 @onready var target = position
 @onready var attack_sprite = $AttackSprite
@@ -28,29 +29,42 @@ func _physics_process(delta):
 
 	move_and_slide()
 func start_attack():
+	
 	attacking = true  
-	attack_sprite.visible = true  
-	attack_sprite.scale = Vector2(1, 1)  
+	$Weapon/AttackAnimation.visible = true  
+	
+	$Weapon/AttackAnimation.scale = Vector2(1, 1)  
 
 	
-	attack_sprite.position = last_direction * attack_offset
+	$Weapon/AttackAnimation.position = last_direction * attack_offset
 
 	
 	if abs(last_direction.x) > abs(last_direction.y):  
-		attack_sprite.rotation_degrees = 0  
-	else:  
-		attack_sprite.rotation_degrees = 90  
-
-	if attack_sprite.sprite_frames and attack_sprite.sprite_frames.has_animation("attack"):
-		attack_sprite.play("attack")
-	else:
-		attacking = false
-		return  
-
-	await get_tree().create_timer(2.0).timeout  
-	attack_sprite.visible = false  
+		$Weapon/AttackAnimation.rotation_degrees = 30  
+		await get_tree().create_timer(0.10).timeout 
+		$Weapon/AttackAnimation.rotation_degrees = 45  
+		await get_tree().create_timer(0.10).timeout 
+		$Weapon/AttackAnimation.rotation_degrees = 60  
+		await get_tree().create_timer(0.10).timeout 
+		$Weapon/AttackAnimation.rotation_degrees = 75  
+		await get_tree().create_timer(0.10).timeout 
+		$Weapon/AttackAnimation.rotation_degrees = 90
+		await get_tree().create_timer(0.10).timeout 
+	
+	$Weapon/AttackAnimation.rotation_degrees = 0
 	attacking = false  
 
-func _on_AttackArea_body_entered(body):
-	if body.has_method("take_damage"):
-		body.take_damage(attack_damage)
+func _on_AttackArea_body_entered(body)->void:
+	return
+	
+#player's attack and health system
+func get_player_health()->int:
+	return player_health
+func set_player_health(Attack_incoming)->void:
+	if(0>(player_health - Attack_incoming)):
+		player_health = 0
+	else:
+		player_health = player_health - Attack_incoming
+func get_player_attack()->int:
+	return player_attack
+	
