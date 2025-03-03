@@ -3,7 +3,7 @@ extends Node2D
 @onready var main = get_tree().current_scene
 
 
-var ally_scene := preload("res://Mobs/Allies/ally_2d.tscn")
+var ally_scene := preload("res://Mobs/Allies/ally_2D.tscn")
 var spawn_points := []
 # Called when the node enters the scene tree for the first time.
 func _ready():
