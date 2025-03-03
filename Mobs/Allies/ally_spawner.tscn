@@ -7,6 +7,7 @@ visibility_layer = 0
 script = ExtResource("1_6bw7k")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
