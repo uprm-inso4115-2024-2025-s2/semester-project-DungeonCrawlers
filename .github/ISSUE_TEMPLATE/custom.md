@@ -17,7 +17,7 @@ A task description is a detailed outline or explanation of a specific job, assig
 Provide implementation ideas on how you would implement the feature, this could be added on with time as you work on the feature.
 
 ### Requirements implemented (N/A for documentation task)
-Mention the requirements that this task implements. If one cannot argue that the design implemented by this task has the functions, entities, and behavior expressed in any requirement, specify the changes that must be done in section 2.2 of the documentation.
+Mention the requirements that this task implements. If one cannot argue that the design implemented by this task has the functions, entities, and behavior expressed in any requirement, specify the changes that must be done in section 2.2 (not neccesarily just the requirements) of the documentation in order to justify this task.
 
 ### Subtasks
 Preferably split the task but if necessary add a subtask description. Describe the smaller tasks involved in the implementation of your task.
