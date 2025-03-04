@@ -1,4 +1,6 @@
-[gd_scene load_steps=22 format=4 uid="uid://cjk6ugy6xve2s"]
+
+[gd_scene load_steps=21 format=4 uid="uid://cjk6ugy6xve2s"]
+
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -760,9 +762,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2dbl"]
-size = Vector2(20, 40)
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_ghkhd")
 metadata/_edit_vertical_guides_ = [114.0]
@@ -828,10 +827,6 @@ speed_scale = 0.5
 position = Vector2(-386, -292)
 scale = Vector2(2, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Weapon/CharacterBody2D"]
-position = Vector2(193, 146)
-scale = Vector2(0.25, 0.25)
-shape = SubResource("RectangleShape2D_l2dbl")
 
 [node name="PlayerHealthBar" parent="Player" instance=ExtResource("12_vhryo")]
 
