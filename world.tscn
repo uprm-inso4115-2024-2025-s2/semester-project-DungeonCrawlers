@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dauvb61drlds7" path="res://Sprites/weapon_baton_with_spikes.png" id="8_t1qux"]
 [ext_resource type="Texture2D" uid="uid://d0v30uu8qrp6r" path="res://Sprites/weapon_axe.png" id="9_yhmry"]
 [ext_resource type="Texture2D" uid="uid://6y1c3jlsogwj" path="res://Sprites/weapon_big_hammer.png" id="10_esu3h"]
-[ext_resource type="PackedScene" uid="uid://dm3wilymjhuky" path="res://health_hud.tscn" id="12_vhryo"]
+[ext_resource type="PackedScene" path="res://health_hud.tscn" id="12_vhryo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6ouf"]
 texture = ExtResource("5_uof8d")
