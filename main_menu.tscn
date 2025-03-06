@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpd2e426bwd1p"]
+[gd_scene load_steps=3 format=3 uid="uid://bpd2e426bwd1p"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_6imqt"]
+[ext_resource type="Texture2D" uid="uid://dg17228ash2qc" path="res://main_menu_assets/Background.png" id="2_dfgor"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,47 +10,51 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_horizontal_guides_ = [160.0, 80.0]
+metadata/_edit_vertical_guides_ = [280.0, 140.0]
 
 [node name="Main Menu" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_6imqt")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu"]
+[node name="TextureRect" type="TextureRect" parent="Main Menu"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -67.5
-offset_top = -81.5
-offset_right = 67.5
-offset_bottom = 81.5
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 937.0
+offset_bottom = 655.0
+scale = Vector2(0.298797, 0.244205)
+texture = ExtResource("2_dfgor")
 
-[node name="TitleLabel" type="Label" parent="Main Menu/VBoxContainer"]
-layout_mode = 2
-text = "Dungeon Crawler"
-horizontal_alignment = 1
+[node name="Label" type="Panel" parent="Main Menu"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 12.0
+offset_right = 233.0
+offset_bottom = 39.0
 
-[node name="StartButton" type="Button" parent="Main Menu/VBoxContainer"]
-layout_mode = 2
-text = "Start"
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 52.0
+offset_right = 248.0
+offset_bottom = 212.0
+scale = Vector2(0.8, 0.8)
 
-[node name="LeaderboardButton" type="Button" parent="Main Menu/VBoxContainer"]
+[node name="Start" type="Button" parent="Main Menu/VBoxContainer"]
 layout_mode = 2
-text = "Leaderboard"
+text = " "
 
-[node name="OptionsButton" type="Button" parent="Main Menu/VBoxContainer"]
+[node name="Leaderboard" type="Button" parent="Main Menu/VBoxContainer"]
 layout_mode = 2
-text = "Options"
+text = " 
+"
 
-[node name="QuitButton" type="Button" parent="Main Menu/VBoxContainer"]
+[node name="Options" type="Button" parent="Main Menu/VBoxContainer"]
 layout_mode = 2
-text = "Quit"
+text = " 
+"
+
+[node name="Quit" type="Button" parent="Main Menu/VBoxContainer"]
+layout_mode = 2
+text = " 
+"
