@@ -1,6 +1,6 @@
 extends Node2D
 
-const SERVER_IP = "172.23.155.142"
+const SERVER_IP = "172.23.155.142" # MACOS: ipconfig getifaddr en0 / LINUX: hostname -I
 const SERVER_PORT = 8910
 
 var peer: ENetMultiplayerPeer
