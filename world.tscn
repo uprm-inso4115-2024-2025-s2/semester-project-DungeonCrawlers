@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d0v30uu8qrp6r" path="res://Sprites/weapon_axe.png" id="9_yhmry"]
 [ext_resource type="Texture2D" uid="uid://6y1c3jlsogwj" path="res://Sprites/weapon_big_hammer.png" id="10_esu3h"]
 [ext_resource type="PackedScene" uid="uid://dm3wilymjhuky" path="res://health_hud.tscn" id="12_vhryo"]
-[ext_resource type="Texture2D" uid="uid://co48t6o611hu8" path="res://0x72_DungeonTilesetII_v1.7/traps.png" id="16_bjhir"]
+[ext_resource type="Texture2D" uid="uid://c4b3guld4mnlv" path="res://0x72_DungeonTilesetII_v1.7/traps.png" id="16_bjhir"]
 [ext_resource type="Script" path="res://traps.gd" id="17_mpquj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6ouf"]
