@@ -1,6 +1,6 @@
 ---
-name: Custom issue template
-about: Issue Template for DC
+name: Implementation issue
+about: Use this template if your work consists mainly of implementation.
 title: ''
 labels: Pending Approval
 assignees: ''
@@ -27,4 +27,4 @@ How will your feature be tested or debugged? Provide a brief description of that
 
 
 ### Deadline
-Friday 7th, 2025
+When do you plan to finish this task?
