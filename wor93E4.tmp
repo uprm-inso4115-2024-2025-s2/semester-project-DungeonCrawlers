@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cjk6ugy6xve2s"]
+[gd_scene load_steps=27 format=4 uid="uid://cjk6ugy6xve2s"]
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://dm3wilymjhuky" path="res://health_hud.tscn" id="12_vhryo"]
 [ext_resource type="Texture2D" uid="uid://iforqwopyvjc" path="res://0x72_DungeonTilesetII_v1.7/traps.png" id="16_bjhir"]
 [ext_resource type="Script" path="res://traps.gd" id="17_mpquj"]
-[ext_resource type="Script" path="res://server.gd" id="18_ggr2c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6ouf"]
 texture = ExtResource("5_uof8d")
@@ -901,9 +900,6 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps"]
 shape = SubResource("RectangleShape2D_v4g2w")
 debug_color = Color(0.988311, 0, 0.303416, 0.42)
-
-[node name="ServerNode" type="Node" parent="."]
-script = ExtResource("18_ggr2c")
 
 [connection signal="body_entered" from="Traps" to="Player" method="_on_traps_body_entered"]
 [connection signal="body_entered" from="Traps" to="Traps" method="_on_body_entered"]

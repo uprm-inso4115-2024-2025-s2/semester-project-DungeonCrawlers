@@ -6,8 +6,8 @@ var player_health = 100
 var player_attack = 25
 
 @onready var target = position
-@onready var attack_sprite = $AttackSprite
-@onready var attack_area = $AttackSprite/AttackArea
+# @onready var attack_sprite = $AttackSprite
+# @onready var attack_area = $AttackSprite/AttackArea
 
 var attacking = false
 var is_moving = false
@@ -54,8 +54,8 @@ func start_attack():
 	$Weapon/AttackAnimation.rotation_degrees = 0
 	attacking = false
 
-func _on_AttackArea_body_entered(body)->void:
-	return
+#func _on_AttackArea_body_entered(body)->void:
+	#return
 
 #player's attack and health system
 func get_player_health()->int:
