@@ -39,3 +39,6 @@ func _physics_process(delta):
 # You can add more functions for ally behavior here
 func set_target(new_target):
 	target = new_target
+	
+func set_player_health(Attack_incoming)->void:
+	pass

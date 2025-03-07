@@ -42,3 +42,4 @@ func _process(delta):
 			enemy_attack_cooldowns[nearest_demon] = current_time
 	if Input.is_action_just_pressed("ui_m"):
 		canvas_layer.visible = !canvas_layer.visible
+	$Player/PlayerHealthBar.update_health(Player.get_player_health())
