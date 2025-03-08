@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://6y1c3jlsogwj" path="res://Sprites/weapon_big_hammer.png" id="10_esu3h"]
 [ext_resource type="PackedScene" uid="uid://dm3wilymjhuky" path="res://health_hud.tscn" id="12_vhryo"]
 [ext_resource type="Texture2D" uid="uid://vhwtja7xyivq" path="res://0x72_DungeonTilesetII_v1.7/traps.png" id="16_bjhir"]
+
 [ext_resource type="Script" path="res://traps.gd" id="17_mpquj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jurpl"]
