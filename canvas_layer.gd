@@ -9,8 +9,8 @@ var miniMapPlayer
 func _ready():
 	miniMapPlayer = player.duplicate()
 	
-	sub_viewport.add_child(tileMap.duplicate())
-	sub_viewport.add_child(miniMapPlayer)
+	#sub_viewport.add_child(tileMap.duplicate())
+	#sub_viewport.add_child(miniMapPlayer)
 
 func _process(delta):
 	miniMapPlayer.position = player.position
