@@ -74,6 +74,12 @@ position = Vector2(-1, 4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hsknn")
 
+[node name="ElfMIdleAnimF1" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-1, -4)
+texture = ExtResource("2_685qf")
+
 [node name="PlayerRun" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -3)
 sprite_frames = SubResource("SpriteFrames_wwvxj")
@@ -83,6 +89,5 @@ position = Vector2(-1, -3)
 sprite_frames = SubResource("SpriteFrames_nrfah")
 
 [node name="PlayerHit" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_3f5p0")

@@ -800,6 +800,8 @@ position = Vector2(280, 216)
 z_index = 1
 texture_filter = 1
 position = Vector2(184, 144)
+speed = 50
+attack_offset = 0
 
 [node name="MobSpawning" type="Camera2D" parent="Player"]
 limit_smoothed = true
