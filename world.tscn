@@ -98,7 +98,7 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, 168)
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_3m66n")]
+[node name="Player" parent="." instance=ExtResource("1_3m66n")]
 z_index = 1
 texture_filter = 1
 position = Vector2(96, -8)
@@ -120,7 +120,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jurpl")
 animation = &"attack"
 frame = 1
-frame_progress = 0.629758
+frame_progress = 0.793383
 speed_scale = 0.5
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Weapon"]
@@ -139,7 +139,7 @@ position = Vector2(-104, 8)
 [node name="CanvasLayer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_5uf2j")]
 player = NodePath("../Player")
 
-[node name="Control" type="Control" parent="." groups=["Player"]]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
