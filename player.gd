@@ -31,7 +31,9 @@ func _physics_process(delta):
 		$PlayerRun.scale.x = 1
 		$PlayerIdle.scale.x = 1
 		$Weapon.scale.x = 0.5
+		$Weapon.position.x = 9
 		$PlayerRun.play()
+	
 	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
 		position.y -= speed * delta
 		$PlayerIdle.stop()
@@ -52,6 +54,7 @@ func _physics_process(delta):
 		$PlayerRun.scale.x = -1
 		$PlayerIdle.scale.x = -1
 		$Weapon.scale.x = -0.5
+		$Weapon.position.x = -11
 		$PlayerRun.play()
 	move_and_slide()
 
