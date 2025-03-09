@@ -3,7 +3,7 @@ extends Node2D
 @onready var main = get_tree().current_scene
 
 var count = 0
-var demon_scene := preload("res://Mobs/Enemies/enemy_2d.tscn")
+var demon_scene := preload("res://Mobs/Enemies/enemy_2D.tscn")
 var spawn_points := []
 var spawned_demons := []  # List to store demons
 var HealthBars := []
