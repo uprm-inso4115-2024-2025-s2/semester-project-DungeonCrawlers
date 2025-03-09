@@ -11,17 +11,26 @@ config_version=5
 [application]
 
 config/name="uprm-inso4115-2024-2025-s2-project-dungeon-crawler"
-run/main_scene="res://main_menu.tscn"
+run/main_scene="res://login.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+Global="*res://Global.gd"
+
 [display]
 
-window/size/viewport_width=280
-window/size/viewport_height=160
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/window_width_override=1024
 window/size/window_height_override=600
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg")
 
 [importer_defaults]
 

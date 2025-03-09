@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://clllbf6am8qdf"]
+
+[node name="SWButton" type="Button"]
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 112.0
+offset_bottom = 40.0
+text = "Sample text"

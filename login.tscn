@@ -1,0 +1,99 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlnysxjutklr2"]
+
+[ext_resource type="Script" path="res://login.gd" id="1_sflgv"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("login_state_label", "data_label", "key_edit_1", "key_edit_2", "data_edit_1", "data_edit_2")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sflgv")
+login_state_label = NodePath("VBoxContainer/LoginStateLabel")
+data_label = NodePath("DataLabel")
+key_edit_1 = NodePath("VBoxContainer2/HBoxContainer/KeyTextEdit1")
+key_edit_2 = NodePath("VBoxContainer2/HBoxContainer2/KeyTextEdit2")
+data_edit_1 = NodePath("VBoxContainer2/HBoxContainer/DataTextEdit1")
+data_edit_2 = NodePath("VBoxContainer2/HBoxContainer2/DataTextzEdit2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 502.0
+offset_top = 272.0
+offset_right = 702.0
+offset_bottom = 403.0
+alignment = 1
+
+[node name="LoginStateLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Not logged in"
+
+[node name="Register Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Register"
+
+[node name="Login Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Login"
+
+[node name="Logout Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Logout"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = -302.0
+offset_top = 351.0
+offset_right = -49.0
+offset_bottom = 505.0
+
+[node name="LoadButton" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Load"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="KeyTextEdit1" type="TextEdit" parent="VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(99, 40)
+layout_mode = 2
+placeholder_text = "Key1"
+
+[node name="DataTextEdit1" type="TextEdit" parent="VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+placeholder_text = "Enter Data1"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="KeyTextEdit2" type="TextEdit" parent="VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(99, 40)
+layout_mode = 2
+placeholder_text = "Key2"
+
+[node name="DataTextzEdit2" type="TextEdit" parent="VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+placeholder_text = "Enter Data2"
+
+[node name="SaveButton" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Save"
+
+[node name="DataLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = -284.0
+offset_top = 525.0
+offset_right = -183.0
+offset_bottom = 551.0
+text = "Data"
+
+[connection signal="pressed" from="VBoxContainer/Register Button" to="." method="_on_register_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Login Button" to="." method="_on_login_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Logout Button" to="." method="_on_logout_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/SaveButton" to="." method="_on_save_button_pressed"]
