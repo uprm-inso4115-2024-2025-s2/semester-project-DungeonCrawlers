@@ -14,20 +14,50 @@ var is_moving = false
 var last_direction = Vector2.RIGHT
 
 func _input(event):
-
 	if event.is_action_pressed("attack") and not attacking:
 		start_attack()
+		
 func _physics_process(delta):
+	$PlayerRun.hide()
+	#Reset idle
+	$PlayerIdle.show()
+	$PlayerIdle.play()
+	# Handle movement input and adjust position
 	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
-		position.x += speed*delta
+		position.x += speed * delta
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.scale.x = 1
+		$PlayerIdle.scale.x = 1
+		$Weapon.scale.x = 0.5
+		$Weapon.position.x = 9
+		$PlayerRun.play()
+	
 	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
-		position.y -= speed*delta
+		position.y -= speed * delta
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.play()
 	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
-		position.y += speed*delta
+		position.y += speed * delta
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.play()
 	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
-		position.x -= speed*delta
-
+		position.x -= speed * delta
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.scale.x = -1
+		$PlayerIdle.scale.x = -1
+		$Weapon.scale.x = -0.5
+		$Weapon.position.x = -11
+		$PlayerRun.play()
 	move_and_slide()
+
 func start_attack():
 
 	attacking = true
