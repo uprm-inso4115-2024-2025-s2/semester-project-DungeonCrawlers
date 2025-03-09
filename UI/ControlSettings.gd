@@ -1,13 +1,12 @@
 extends Control
 
-@onready var back_button = $VBoxContainer/BackButton  # Adjust path if needed
+@onready var return_button = $VBoxContainer/Return
 
 func _ready():
-	if back_button:
-		back_button.pressed.connect(_on_back_pressed)
-	else:
-		print("Error: BackButton not found!")
+	return_button.pressed.connect(_on_return_pressed)
 
-func _on_back_pressed():
-	print("Returning to main settings menu")
-	queue_free()  # Closes the ControlsSettings menu
+func _on_return_pressed():
+	print("Returning to Settings Menu")
+	var settings_menu = preload("res://settings_menu.tscn").instantiate()
+	get_tree().current_scene.add_child(settings_menu)
+	queue_free()  # Closes the current menu

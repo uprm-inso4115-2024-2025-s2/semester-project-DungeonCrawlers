@@ -1,11 +1,12 @@
-extends Node
+extends Control
 
+@onready var return_button = $VBoxContainer/Return
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready():
+	return_button.pressed.connect(_on_return_pressed)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_return_pressed():
+	print("Returning to Settings Menu")
+	var settings_menu = preload("res://settings_menu.tscn").instantiate()
+	get_tree().current_scene.add_child(settings_menu)
+	queue_free()  # Closes the current menu
