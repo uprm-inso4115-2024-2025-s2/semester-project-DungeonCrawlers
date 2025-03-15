@@ -6,8 +6,8 @@ var player_health = 100
 var player_attack = 25
 
 @onready var target = position
-@onready var attack_sprite = $AttackSprite
-@onready var attack_area = $AttackSprite/AttackArea
+# @onready var attack_sprite = $AttackSprite
+# @onready var attack_area = $AttackSprite/AttackArea
 
 var attacking = false
 var is_moving = false
@@ -17,16 +17,46 @@ func _input(event):
 
 	if event.is_action_pressed("attack") and not attacking:
 		start_attack()
+		
 func _physics_process(delta):
+	$PlayerRun.hide()
+	#Reset idle
+	$PlayerIdle.show()
+	$PlayerIdle.play()
+	# Handle movement input and adjust position
 	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
-		position.x += speed*delta
+		position.x += speed * delta
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.scale.x = 1
+		$PlayerIdle.scale.x = 1
+		$Weapon.scale.x = 0.5
+		$Weapon.position.x = 9
+		$PlayerRun.play()
+	
 	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
-		position.y -= speed*delta
+		position.y -= speed * delta
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.play()
 	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
-		position.y += speed*delta
+		position.y += speed * delta
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.play()
 	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
-		position.x -= speed*delta
-
+		position.x -= speed * delta
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.scale.x = -1
+		$PlayerIdle.scale.x = -1
+		$Weapon.scale.x = -0.5
+		$Weapon.position.x = -11
+		$PlayerRun.play()
 	move_and_slide()
 func start_attack():
 
@@ -54,8 +84,8 @@ func start_attack():
 	$Weapon/AttackAnimation.rotation_degrees = 0
 	attacking = false
 
-func _on_AttackArea_body_entered(body)->void:
-	return
+#func _on_AttackArea_body_entered(body)->void:
+	#return
 
 #player's attack and health system
 func get_player_health()->int:

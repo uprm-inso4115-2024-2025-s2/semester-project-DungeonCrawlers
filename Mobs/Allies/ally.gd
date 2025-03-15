@@ -15,11 +15,7 @@ func _physics_process(delta):
 	if player:
 		
 		move_direction = (player.global_position - global_position).normalized()
-		print(player.global_position)
-		print()
-		print(global_position)
 		if (player.global_position.distance_to(global_position)) < 35:
-			print("hi")
 			move_direction = Vector2.ZERO
 			animated_sprite.play("idle")
 		else:
