@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=21 format=4 uid="uid://cjk6ugy6xve2s"]
-
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -16,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dauvb61drlds7" path="res://Sprites/weapon_baton_with_spikes.png" id="8_t1qux"]
 [ext_resource type="Texture2D" uid="uid://d0v30uu8qrp6r" path="res://Sprites/weapon_axe.png" id="9_yhmry"]
 [ext_resource type="Texture2D" uid="uid://6y1c3jlsogwj" path="res://Sprites/weapon_big_hammer.png" id="10_esu3h"]
-[ext_resource type="PackedScene" path="res://health_hud.tscn" id="12_vhryo"]
+[ext_resource type="PackedScene" uid="uid://dm3wilymjhuky" path="res://health_hud.tscn" id="12_vhryo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6ouf"]
 texture = ExtResource("5_uof8d")
@@ -798,7 +796,7 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(280, 216)
 
-[node name="Player" parent="." instance=ExtResource("1_3m66n")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_3m66n")]
 z_index = 1
 texture_filter = 1
 position = Vector2(184, 144)
@@ -826,7 +824,6 @@ speed_scale = 0.5
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Weapon"]
 position = Vector2(-386, -292)
 scale = Vector2(2, 2)
-
 
 [node name="PlayerHealthBar" parent="Player" instance=ExtResource("12_vhryo")]
 

@@ -1,11 +1,34 @@
-extends Node
+extends CharacterBody2D
+@onready var foreground_bar = $AnimatedSprite2D/ForegroundBar
+@onready var animated_sprite = $AnimatedSprite2D
+@export var speed: float = 50  # Adjustable enemy speed
+
+var player = null
+var move_direction = Vector2.ZERO
+
+func _ready():
+	animated_sprite.play("idle")
+	player = get_tree().get_first_node_in_group("player")
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta):
+	if player:
+		move_direction = (player.global_position - global_position).normalized()
+		animated_sprite.play("run")
+	else:
+		if randf() < 0.01:
+			move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+			
+		if randf() < 0.02:
+			move_direction = Vector2.ZERO
+			animated_sprite.play("idle")
+		else:
+			animated_sprite.play("run")
+	velocity = move_direction * speed
+	move_and_slide()
+	
+	if move_direction.x < 0:
+		animated_sprite.flip_h = true
+	elif move_direction.x > 0:
+		animated_sprite.flip_h = false
+		
