@@ -19,7 +19,8 @@ func _on_body_entered(body):
 	await get_tree().create_timer(1.0).timeout
 	
 	if (active):
-		body.set_player_health(trap_damage)
+		if body.name == "Player":
+			body.set_player_health(trap_damage)
 	pass # Replace with function body.
 
 
