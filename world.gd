@@ -2,6 +2,7 @@ extends Node2D
 
 var attack_distance_player = 50.0
 var attack_distance_enemy = 30.0
+@onready var BossSpawn = $BossSpawn
 @onready var EnemySpawner = $EnemySpawner
 @onready var Player = $Player
 @onready var canvas_layer = $CanvasLayer

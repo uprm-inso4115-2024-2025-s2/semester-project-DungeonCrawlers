@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=4 uid="uid://cjk6ugy6xve2s"]
+[gd_scene load_steps=33 format=4 uid="uid://cjk6ugy6xve2s"]
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
 [ext_resource type="PackedScene" uid="uid://bl8oknjgabrw5" path="res://Mobs/FrindlyChungus/node_2d.tscn" id="2_qrjl8"]
 [ext_resource type="PackedScene" uid="uid://cm7leo13cucj8" path="res://Mobs/EnemyMobs/node_2d.tscn" id="3_be4mt"]
+[ext_resource type="PackedScene" uid="uid://32ov6kxts4cy" path="res://Mobs/Enemies/boss.tscn" id="3_rljpm"]
 [ext_resource type="TileSet" uid="uid://beyknfgxm43ey" path="res://autotileFloorWall.tres" id="3_yeq46"]
 [ext_resource type="PackedScene" uid="uid://cyqs74exlvuc1" path="res://Mobs/Enemies/enemy_spawner.tscn" id="6_ggghl"]
 [ext_resource type="PackedScene" uid="uid://c6pm4gfi87tca" path="res://Mobs/Allies/ally_spawner.tscn" id="7_qay8k"]
@@ -152,6 +153,8 @@ tile_set = ExtResource("3_yeq46")
 [node name="Miscl_" type="TileMapLayer" parent="Floor/Walls"]
 tile_map_data = PackedByteArray("AAAEAPr/BAAPAAUAAAAFAPn/AQAAAAAAAAAFAPr/AQAAAAAAAAAFAPv/AQAAAAAAAAAGAPn/AQAAAAAAAAAGAPr/AQAAAAAAAAAGAPv/AQAAAAAAAAAHAPr/BAAPAAUAAAD///r/BAAMAAAAAAD///v/BAAMAAEAAAABAPr/BAAOAAAAAAABAPv/BAAOAAEAAAAKAPr/BAAOAAAAAAAKAPv/BAAOAAEAAAAMAPr/BAAOAAAAAAAMAPv/BAAOAAEAAAD+//v/BAAMAAMAAAACAPv/BAAMAAMAAAD///n/BAAMAAMAAAAAAPn/BAAMAAMAAAABAPn/BAAMAAMAAAAKAPn/BAAMAAMAAAALAPn/BAAMAAMAAAAMAPn/BAAMAAMAAAAJAPv/BAAMAAMAAAANAPv/BAAMAAMAAAAEAPv/BAAPAAYAAAAEAPz/BAAPAAcAAAAHAPv/BAAPAAYAAAAHAPz/BAAPAAcAAAAAAPr/BAAPAAIAAAAAAPv/BAAPAAMAAAALAPr/BAAPAAIAAAALAPv/BAAPAAMAAAADAP3/AQABAAUAAAAAAP3/AQABAAUAAAAIAP3/AQABAAUAAAALAP3/AQABAAUAAAAEAAcABAAPAAUAAAAEAAgABAAPAAYAAAAEAAkABAAPAAcAAAAEAAIABAAPAAUAAAAEAAMABAAPAAYAAAAEAAQABAAPAAcAAAAHAAIABAAPAAUAAAAHAAMABAAPAAYAAAAHAAQABAAPAAcAAAAHAAcABAAPAAUAAAAHAAgABAAPAAYAAAAHAAkABAAPAAcAAAAKAAcABAAPAAUAAAAKAAgABAAPAAYAAAAKAAkABAAPAAcAAAAKAAIABAAPAAUAAAAKAAMABAAPAAYAAAAKAAQABAAPAAcAAAABAAIABAAPAAUAAAABAAMABAAPAAYAAAABAAQABAAPAAcAAAABAAcABAAPAAUAAAABAAgABAAPAAYAAAABAAkABAAPAAcAAAA=")
 tile_set = ExtResource("3_yeq46")
+
+[node name="Boss" parent="." instance=ExtResource("3_rljpm")]
 
 [node name="BiggieChungus" parent="." instance=ExtResource("2_qrjl8")]
 texture_filter = 1
