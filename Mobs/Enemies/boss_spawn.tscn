@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://clha2adjjkwcu"]
+
+[ext_resource type="Script" path="res://Mobs/Enemies/boss_spawn.gd" id="1_fygdu"]
+
+[node name="BossSpawn" type="Node2D"]
+script = ExtResource("1_fygdu")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(44, 20)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
