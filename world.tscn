@@ -133,13 +133,11 @@ tile_map_data = PackedByteArray("AAAEAPr/BAAPAAUAAAAFAPn/BAARAAUAAAAFAPr/BAARAAY
 tile_set = ExtResource("3_yeq46")
 
 [node name="BiggieChungus" parent="." instance=ExtResource("2_qrjl8")]
-visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(168, 168)
 
 [node name="Demon" parent="." instance=ExtResource("3_be4mt")]
-visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, 168)

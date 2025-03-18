@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://25a3rpnuavgd"]
+[gd_scene load_steps=15 format=3 uid="uid://25a3rpnuavgd"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_2611n"]
 [ext_resource type="Texture2D" uid="uid://buuv0ljpqs0oq" path="res://0x72_DungeonTilesetII_v1.7/frames/elf_m_idle_anim_f1.png" id="2_685qf"]
