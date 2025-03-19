@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://32ov6kxts4cy"]
+[gd_scene load_steps=15 format=3 uid="uid://d23too6ioc6pe"]
 
 [ext_resource type="Script" path="res://Mobs/Enemies/boss.gd" id="1_8cqmq"]
 [ext_resource type="Texture2D" uid="uid://dpd53s53oi7lo" path="res://0x72_DungeonTilesetII_v1.7/frames/wizzard_m_run_anim_f1.png" id="3_k0h8p"]
@@ -50,9 +50,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_og0r5"]
-radius = 2.0
-height = 32.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mxlbk"]
+radius = 23.7473
+height = 62.2453
 
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_8cqmq")
@@ -79,9 +79,10 @@ offset_bottom = -13.0
 color = Color(0, 1, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 14)
+position = Vector2(10, 10)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_og0r5")
+scale = Vector2(-0.113801, -0.160655)
+shape = SubResource("CapsuleShape2D_mxlbk")
 
 [node name="State Control" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("11_o8qjo")
