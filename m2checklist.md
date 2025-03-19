@@ -1,4 +1,6 @@
+
 This checklist includes both the professor's feedback and the milestone 2 guidelines.  
+
 
 ***The documentation must comply with each and every point in here!***
 
