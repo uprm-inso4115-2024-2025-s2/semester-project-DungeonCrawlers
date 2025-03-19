@@ -10,7 +10,7 @@
     },
     "Milestone 2": {
       "startDate": "2025-02-24",
-      "endDate": "2025-03-22",
+      "endDate": "2025-03-21",
       "projectedGroupGrade": 100.0
     },
     "Milestone 3": {
@@ -20,7 +20,7 @@
     }
   },
   "lectureTopicTaskQuota": 4,
-  "countOpenIssues": false,
+  "countOpenIssues": true,
   "sprints": 2,
   "minTasksPerSprint": 1
 }
