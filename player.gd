@@ -123,3 +123,12 @@ func start_attack():
 	
 	$Weapon/AttackAnimation.rotation_degrees = 0
 	attacking = false
+
+# --- Added Functions ---
+func get_player_health() -> int:
+	# Returns the current player's health value.
+	return player_health
+
+func get_player_attack() -> int:
+	# Returns the current player's attack value.
+	return player_attack
