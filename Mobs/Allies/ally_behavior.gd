@@ -19,17 +19,17 @@ func _physics_process(delta):
 		# Move in the random direction or idle sometimes
 		if randf() < 0.01:  # Small chance to change direction
 			move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-		
+
 		# Small chance to stop and idle
 		if randf() < 0.02:
 			move_direction = Vector2.ZERO
 			animated_sprite.play("idle")
 		else:
 			animated_sprite.play("run")
-	
+
 	velocity = move_direction * speed
 	move_and_slide()
-	
+
 	# Flip sprite based on movement direction
 	if move_direction.x < 0:
 		animated_sprite.flip_h = true
@@ -39,6 +39,6 @@ func _physics_process(delta):
 # You can add more functions for ally behavior here
 func set_target(new_target):
 	target = new_target
-	
+
 func set_player_health(Attack_incoming)->void:
 	pass
