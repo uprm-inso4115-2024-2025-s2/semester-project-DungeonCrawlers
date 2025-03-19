@@ -18,13 +18,14 @@ func _input(event):
 		start_attack()
 		
 func _physics_process(delta):
+	velocity = Vector2.ZERO  # Reset velocity every frame
 	$PlayerRun.hide()
 	#Reset idle
 	$PlayerIdle.show()
 	$PlayerIdle.play()
 	# Handle movement input and adjust position
 	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
-		position.x += speed * delta
+		velocity.x = speed
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
 		$PlayerRun.show()
@@ -35,19 +36,19 @@ func _physics_process(delta):
 		$PlayerRun.play()
 	
 	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
-		position.y -= speed * delta
+		velocity.y -= speed 
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
 		$PlayerRun.show()
 		$PlayerRun.play()
 	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
-		position.y += speed * delta
+		velocity.y += speed 
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
 		$PlayerRun.show()
 		$PlayerRun.play()
 	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
-		position.x -= speed * delta
+		velocity.x -= speed 
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
 		$PlayerRun.show()

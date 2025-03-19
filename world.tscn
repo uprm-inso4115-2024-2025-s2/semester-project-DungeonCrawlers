@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
 [ext_resource type="PackedScene" uid="uid://bl8oknjgabrw5" path="res://Mobs/FrindlyChungus/node_2d.tscn" id="2_qrjl8"]
 [ext_resource type="PackedScene" uid="uid://cm7leo13cucj8" path="res://Mobs/EnemyMobs/node_2d.tscn" id="3_be4mt"]
-[ext_resource type="PackedScene" uid="uid://32ov6kxts4cy" path="res://Mobs/Enemies/boss.tscn" id="3_rljpm"]
+[ext_resource type="PackedScene" uid="uid://d23too6ioc6pe" path="res://Mobs/Enemies/boss.tscn" id="3_rljpm"]
 [ext_resource type="TileSet" uid="uid://beyknfgxm43ey" path="res://autotileFloorWall.tres" id="3_yeq46"]
 [ext_resource type="PackedScene" uid="uid://cyqs74exlvuc1" path="res://Mobs/Enemies/enemy_spawner.tscn" id="6_ggghl"]
 [ext_resource type="PackedScene" uid="uid://c6pm4gfi87tca" path="res://Mobs/Allies/ally_spawner.tscn" id="7_qay8k"]

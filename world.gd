@@ -2,7 +2,7 @@ extends Node2D
 
 var attack_distance_player = 50.0
 var attack_distance_enemy = 30.0
-@onready var BossSpawn = $BossSpawn
+@onready var Boss = $Boss
 @onready var EnemySpawner = $EnemySpawner
 @onready var Player = $Player
 @onready var canvas_layer = $CanvasLayer
@@ -13,9 +13,14 @@ var player_attack_cooldown= 0.0
 func _process(delta):
 	var current_time = Time.get_ticks_msec() / 1000.0
 	if Input.is_action_just_pressed("attack") and current_time - player_attack_cooldown >= 0.5:
+		
+		var Bossdistance = Player.global_position.distance_to(Boss.global_position)
+		if Bossdistance <= attack_distance_player:
+			Boss.set_Boss_health(Player.get_player_attack())
+			Boss.update_health(Boss.get_Boss_health())
 		for demon in EnemySpawner.spawned_demons:
 			var distance = Player.global_position.distance_to(demon.global_position)
-
+			
 			if distance <= attack_distance_player:
 				demon.set_Demon_health(Player.get_player_attack())
 				demon.update_health(demon.get_Demon_health())
