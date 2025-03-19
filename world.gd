@@ -5,21 +5,23 @@ var attack_distance_enemy = 30.0
 @onready var EnemySpawner = $EnemySpawner
 @onready var Player = $Player
 @onready var canvas_layer = $CanvasLayer
+@onready var game_over_screen = preload("res://UI/game_over_screen.tscn")
 
 var enemy_attack_cooldowns = {}
-var player_attack_cooldown= 0.0
+var player_attack_cooldown = 0.0
+var game_over = false
 
 func _process(delta):
+	if game_over:
+		return  # Si el juego ya terminó, evitamos más procesamiento
+
 	var current_time = Time.get_ticks_msec() / 1000.0
 	if Input.is_action_just_pressed("attack") and current_time - player_attack_cooldown >= 0.5:
 		for demon in EnemySpawner.spawned_demons:
 			var distance = Player.global_position.distance_to(demon.global_position)
-
 			if distance <= attack_distance_player:
 				demon.set_Demon_health(Player.get_player_attack())
 				demon.update_health(demon.get_Demon_health())
-
-
 		# Set cooldown timestamp
 		player_attack_cooldown = current_time
 
@@ -27,7 +29,6 @@ func _process(delta):
 	var min_distance = attack_distance_enemy
 	for demon in EnemySpawner.spawned_demons:
 		var distance = Player.global_position.distance_to(demon.global_position)
-
 		if distance <= attack_distance_enemy and distance < min_distance:
 			min_distance = distance
 			nearest_demon = demon
@@ -37,9 +38,35 @@ func _process(delta):
 			# Only the nearest demon attacks
 			Player.set_player_health(nearest_demon.get_Demon_attack())
 			$Player/PlayerHealthBar.update_health(Player.get_player_health())
-
 			# Update the cooldown timer for this demon
 			enemy_attack_cooldowns[nearest_demon] = current_time
-	if Input.is_action_just_pressed("ui_m"):
-		canvas_layer.visible = !canvas_layer.visible
-	$Player/PlayerHealthBar.update_health(Player.get_player_health())
+
+	# Verificar si el jugador ha perdido
+	if Player.get_player_health() <= 0:
+		trigger_game_over(false)
+		return
+
+	# Verificar si el jugador ha ganado (si no quedan enemigos)
+	if EnemySpawner.spawned_demons.size() == 0:
+		await get_tree().create_timer(0.5).timeout  # Evita falsa detección
+		if EnemySpawner.spawned_demons.size() == 0:
+			trigger_game_over(true)
+
+func trigger_game_over(victory: bool):
+	game_over = true
+	get_tree().paused = true  # Pausar el juego
+
+	var screen_instance = game_over_screen.instantiate()
+	add_child(screen_instance)
+
+	# Asegurar que el mensaje siempre se centre correctamente
+	screen_instance.message_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	screen_instance.message_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	screen_instance.message_label.size = Vector2(400, 100)  # Ajusta tamaño fijo para evitar desajustes
+
+	if victory:
+		screen_instance.set_message("¡Victoria!")
+		print("¡Victoria! Has derrotado a todos los enemigos.")
+	else:
+		screen_instance.set_message("Game Over")
+		print("Game Over. Has sido derrotado.")

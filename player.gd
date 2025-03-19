@@ -16,10 +16,10 @@ var last_direction = Vector2.RIGHT
 func _input(event):
 	if event.is_action_pressed("attack") and not attacking:
 		start_attack()
-		
+
 func _physics_process(delta):
 	$PlayerRun.hide()
-	#Reset idle
+	# Reset idle
 	$PlayerIdle.show()
 	$PlayerIdle.play()
 	# Handle movement input and adjust position
@@ -59,15 +59,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func start_attack():
-
 	attacking = true
 	$Weapon/AttackAnimation.visible = true
-
 	$Weapon/AttackAnimation.scale = Vector2(1, 1)
-
-
 	$Weapon/AttackAnimation.position = last_direction * attack_offset
-
 
 	if abs(last_direction.x) > abs(last_direction.y):
 		$Weapon/AttackAnimation.rotation_degrees = 30
@@ -84,13 +79,15 @@ func start_attack():
 	$Weapon/AttackAnimation.rotation_degrees = 0
 	attacking = false
 
-#func _on_AttackArea_body_entered(body)->void:
-	#return
-
-#player's attack and health system
-func get_player_health()->int:
+# player's attack and health system
+func get_player_health() -> int:
 	return player_health
-func set_player_health(Attack_incoming)->void:
+
+func set_player_health(Attack_incoming) -> void:
 	player_health = max(0, player_health - Attack_incoming)
-func get_player_attack()->int:
+	$PlayerHealthBar.update_health(player_health)  # Asegurar que la UI se actualiza
+	if player_health == 0:
+		get_parent().trigger_game_over(false)  # Notificar al world.gd
+
+func get_player_attack() -> int:
 	return player_attack
