@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cn4sis57vp3si"]
 
-[ext_resource type="Theme" uid="uid://cb2tqos08yhkd" path="res://addons/SimpleTemplateMainMenu-1.0.1/assets/MinimalUI/MinimalUI.tres" id="2_nwagm"]
-[ext_resource type="PackedScene" uid="uid://603k3vy4p3f1" path="res://addons/SimpleTemplateMainMenu-1.0.1/scenes/settings.tscn" id="4_y4cq8"]
+[ext_resource type="Theme" uid="uid://cb2tqos08yhkd" path="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/assets/MinimalUI/MinimalUI.tres" id="2_nwagm"]
+[ext_resource type="PackedScene" uid="uid://603k3vy4p3f1" path="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/scenes/settings.tscn" id="4_y4cq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c5i0"]
 size = Vector2(32, 32)

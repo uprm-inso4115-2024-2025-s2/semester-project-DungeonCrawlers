@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://603k3vy4p3f1"]
 
-[ext_resource type="Theme" uid="uid://cb2tqos08yhkd" path="res://addons/SimpleTemplateMainMenu-1.0.1/assets/MinimalUI/MinimalUI.tres" id="1_8vxdm"]
-[ext_resource type="PackedScene" uid="uid://v37pld2ul4n6" path="res://addons/SimpleTemplateMainMenu-1.0.1/scenes/action_button.tscn" id="4_qu75p"]
+[ext_resource type="Theme" uid="uid://cb2tqos08yhkd" path="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/assets/MinimalUI/MinimalUI.tres" id="1_8vxdm"]
+[ext_resource type="PackedScene" uid="uid://v37pld2ul4n6" path="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/scenes/action_button.tscn" id="4_qu75p"]
 
 [node name="Settings" type="TabContainer"]
 anchors_preset = 15

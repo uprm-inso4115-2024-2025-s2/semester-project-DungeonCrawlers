@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Utilities="*res://addons/SimpleTemplateMainMenu-1.0.1/scripts/utilities.gd"
-AudioManager="*res://addons/SimpleTemplateMainMenu-1.0.1/scripts/audio_manager.gd"
+Utilities="*res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/scripts/utilities.gd"
+AudioManager="*res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/scripts/audio_manager.gd"
 
 [display]
 

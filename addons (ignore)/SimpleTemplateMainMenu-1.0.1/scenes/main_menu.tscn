@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dc388hkklqvvc"]
 
-[ext_resource type="Theme" uid="uid://cb2tqos08yhkd" path="res://addons/SimpleTemplateMainMenu-1.0.1/assets/MinimalUI/MinimalUI.tres" id="1_0ajpt"]
-[ext_resource type="PackedScene" uid="uid://603k3vy4p3f1" path="res://addons/SimpleTemplateMainMenu-1.0.1/scenes/settings.tscn" id="3_dt7l5"]
+[ext_resource type="Theme" uid="uid://cb2tqos08yhkd" path="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/assets/MinimalUI/MinimalUI.tres" id="1_0ajpt"]
+[ext_resource type="PackedScene" uid="uid://603k3vy4p3f1" path="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/scenes/settings.tscn" id="3_dt7l5"]
 
 [node name="MainMenu" type="Node2D"]
 

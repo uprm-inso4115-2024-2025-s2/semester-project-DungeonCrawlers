@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6oklpo7cs1hl"]
 
-[ext_resource type="Script" path="res://Menus/pause_menu_ui.gd" id="1_4dqng"]
-[ext_resource type="Texture2D" uid="uid://ber21ddw62ix7" path="res://addons/SimpleTemplateMainMenu-1.0.1/assets/In-Pause Menu Design (1).png" id="2_x3puj"]
+[ext_resource type="Script" path="res://Pause_Menu/pause_menu_ui.gd" id="1_4dqng"]
+[ext_resource type="Texture2D" uid="uid://ber21ddw62ix7" path="res://Pause_Menu/In-Pause Menu Design (1).png" id="2_x3puj"]
 
 [node name="PauseMenuUI" type="Control"]
 process_mode = 3
