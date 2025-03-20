@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cdftf0f0a87pp"
+path="res://.godot/imported/Modern10.wav-05b2e15f6781abe487480e601729fb6b.sample"
+
+[deps]
+
+source_file="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/assets/audio/Modern10.wav"
+dest_files=["res://.godot/imported/Modern10.wav-05b2e15f6781abe487480e601729fb6b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
