@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=53 format=3 uid="uid://cb2tqos08yhkd"]
 
-[ext_resource type="FontFile" uid="uid://dsisvfrdgqau" path="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/assets/Cubic_11_1.013_R.ttf" id="1_vgqbv"]
-[ext_resource type="Texture2D" uid="uid://6pnkpupuhda" path="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/assets/MinimalUI/icons.svg" id="2"]
+[ext_resource type="FontFile" uid="uid://dsisvfrdgqau" path="res://addons/SimpleTemplateMainMenu-1.0.1/assets/Cubic_11_1.013_R.ttf" id="1_vgqbv"]
+[ext_resource type="Texture2D" uid="uid://6pnkpupuhda" path="res://addons/SimpleTemplateMainMenu-1.0.1/assets/MinimalUI/icons.svg" id="2"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0, 0, 0, 1)

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
 [ext_resource type="PackedScene" uid="uid://bl8oknjgabrw5" path="res://Mobs/FrindlyChungus/node_2d.tscn" id="2_qrjl8"]
+[ext_resource type="PackedScene" uid="uid://c6oklpo7cs1hl" path="res://Menus/pause_menu_ui.tscn" id="2_r3qjk"]
 [ext_resource type="PackedScene" uid="uid://cm7leo13cucj8" path="res://Mobs/EnemyMobs/node_2d.tscn" id="3_be4mt"]
 [ext_resource type="PackedScene" uid="uid://d23too6ioc6pe" path="res://Mobs/Enemies/boss.tscn" id="3_rljpm"]
 [ext_resource type="TileSet" uid="uid://beyknfgxm43ey" path="res://autotileFloorWall.tres" id="3_yeq46"]
@@ -208,6 +209,17 @@ position = Vector2(-104, 8)
 [node name="CanvasLayer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_5uf2j")]
 visible = false
 player = NodePath("../Player")
+
+[node name="PauseMenuUI" parent="CanvasLayer" instance=ExtResource("2_r3qjk")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 283.0
+offset_bottom = 163.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
