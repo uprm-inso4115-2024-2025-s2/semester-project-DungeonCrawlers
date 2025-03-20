@@ -6,6 +6,8 @@ var attack_distance_enemy = 30.0
 @onready var EnemySpawner = $EnemySpawner
 @onready var Player = $Player
 @onready var canvas_layer = $CanvasLayer
+@onready var pause_menu = get_node_or_null("PauseMenuUI")
+
 
 var enemy_attack_cooldowns = {}
 var player_attack_cooldown= 0.0
@@ -49,3 +51,12 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_m"):
 		canvas_layer.visible = !canvas_layer.visible
 	$Player/PlayerHealthBar.update_health(Player.get_player_health())
+
+#NOTE: Esto que anadi reconoce el esc key para activar el pause menu
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):  # Detect ESC key press
+		if pause_menu:
+			pause_menu.toggle_pause()
+		#Debugging
+		#else:
+			#print("ERROR: Pause Menu not found in the scene!")
