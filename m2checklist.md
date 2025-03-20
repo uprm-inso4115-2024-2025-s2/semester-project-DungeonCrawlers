@@ -102,6 +102,8 @@ This checklist includes both the professor's feedback and the milestone 2 guidel
 ### Domain and Requirements Acquisition
 - [X] A specific plan for domain and requirements acquisition is outlined.
 - [X] The plan includes more than generic activities (e.g., consulting relevant literature, conducting interviews).
+- [ ] A structured questionnaire for stakeholder interviews is included (e.g., sample questions, format).
+- [ ] Domain acquisition methods (e.g., surveys, document analysis) are documented separately from requirements elicitation methods (e.g., stakeholder workshops, prototyping).
 - [ ] The plan explains how meaningful requirements will be documented.
 - [X] Relevant resources are identified, with justification for their inclusion.
 - [X] A strategy for incorporating new findings into domain understanding is outlined.
