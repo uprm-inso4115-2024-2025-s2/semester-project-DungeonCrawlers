@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6pm4gfi87tca"]
+
+[ext_resource type="Script" path="res://Mobs/Allies/ally_spawner.gd" id="1_6bw7k"]
+
+[node name="AllySpawner" type="Node2D"]
+visibility_layer = 0
+script = ExtResource("1_6bw7k")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(88, 89)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

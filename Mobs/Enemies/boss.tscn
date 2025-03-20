@@ -1,0 +1,97 @@
+[gd_scene load_steps=15 format=3 uid="uid://d23too6ioc6pe"]
+
+[ext_resource type="Script" path="res://Mobs/Enemies/boss.gd" id="1_8cqmq"]
+[ext_resource type="Texture2D" uid="uid://dpd53s53oi7lo" path="res://0x72_DungeonTilesetII_v1.7/frames/wizzard_m_run_anim_f1.png" id="3_k0h8p"]
+[ext_resource type="Texture2D" uid="uid://d1k86i5d1dv1g" path="res://0x72_DungeonTilesetII_v1.7/frames/wizzard_m_run_anim_f3.png" id="4_82f2h"]
+[ext_resource type="Texture2D" uid="uid://bcuijdsh2c6lj" path="res://0x72_DungeonTilesetII_v1.7/frames/wizzard_m_idle_anim_f2.png" id="5_01pac"]
+[ext_resource type="Texture2D" uid="uid://1u84oq0fggk" path="res://0x72_DungeonTilesetII_v1.7/frames/wizzard_m_idle_anim_f0.png" id="6_bhehb"]
+[ext_resource type="Texture2D" uid="uid://ciep0vgnb052x" path="res://0x72_DungeonTilesetII_v1.7/frames/wizzard_m_idle_anim_f1.png" id="7_od54s"]
+[ext_resource type="Texture2D" uid="uid://ojkvfum5ske2" path="res://0x72_DungeonTilesetII_v1.7/frames/wizzard_m_idle_anim_f3.png" id="8_pibsd"]
+[ext_resource type="Texture2D" uid="uid://vclu5nxsdumm" path="res://0x72_DungeonTilesetII_v1.7/frames/wizzard_m_run_anim_f0.png" id="9_3txfd"]
+[ext_resource type="Texture2D" uid="uid://ctwpe4r2iuods" path="res://0x72_DungeonTilesetII_v1.7/frames/wizzard_m_run_anim_f2.png" id="10_3o78t"]
+[ext_resource type="Script" path="res://Mobs/Enemies/state_control.gd" id="11_o8qjo"]
+[ext_resource type="Script" path="res://Mobs/Enemies/wander.gd" id="11_wdd6h"]
+[ext_resource type="Script" path="res://Idle.gd" id="12_8w7w1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fyif8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bhehb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_od54s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_01pac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pibsd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_3txfd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k0h8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3o78t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_82f2h")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mxlbk"]
+radius = 23.7473
+height = 62.2453
+
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_8cqmq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -5)
+scale = Vector2(2, 1.35714)
+sprite_frames = SubResource("SpriteFrames_fyif8")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Background_bar" type="ColorRect" parent="AnimatedSprite2D"]
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -13.0
+color = Color(0, 0, 0, 1)
+
+[node name="Foreground_bar" type="ColorRect" parent="AnimatedSprite2D"]
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -13.0
+color = Color(0, 1, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 10)
+rotation = 1.5708
+scale = Vector2(-0.113801, -0.160655)
+shape = SubResource("CapsuleShape2D_mxlbk")
+
+[node name="State Control" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("11_o8qjo")
+initial_state = NodePath("wander")
+
+[node name="wander" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
+script = ExtResource("11_wdd6h")
+enemy = NodePath("../..")
+
+[node name="Idle" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
+script = ExtResource("12_8w7w1")
+enemy = NodePath("../..")
