@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmd56p7rawqp7"
-path="res://.godot/imported/icon.svg-89dbd1cc24bd1d1af747859ff0840b13.ctex"
+uid="uid://ber21ddw62ix7"
+path="res://.godot/imported/In-Pause Menu Design (1).png-81e4450cd2744adf91b49993b4f409cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-89dbd1cc24bd1d1af747859ff0840b13.ctex"]
+source_file="res://addons/SimpleTemplateMainMenu-1.0.1/assets/In-Pause Menu Design (1).png"
+dest_files=["res://.godot/imported/In-Pause Menu Design (1).png-81e4450cd2744adf91b49993b4f409cb.ctex"]
 
 [params]
 
@@ -31,7 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
+detect_3d/compress_to=0
