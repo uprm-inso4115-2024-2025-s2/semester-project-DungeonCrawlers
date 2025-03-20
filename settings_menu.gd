@@ -16,6 +16,8 @@ const AUDIO_SCENE = "res://UI/AudioSettings.tscn"
 const CONTROLS_SCENE = "res://UI/ControlSettings.tscn"
 const GRAPHICS_SCENE = "res://UI/GraphicsSettings.tscn"
 
+var previous_menu = null  # Stores reference to the menu that opened Settings
+
 func _ready():
 	audio_button.pressed.connect(_on_audio_pressed)
 	controls_button.pressed.connect(_on_controls_pressed)
@@ -24,6 +26,15 @@ func _ready():
 	
 	# Play fade-in animation on start
 	animation_player.play("fade_in")
+	
+	## Ensure UI still works even when paused
+	process_mode = Node.PROCESS_MODE_ALWAYS  # ✅ Keeps UI active when paused
+
+	# Also allow buttons to respond while paused
+	audio_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	controls_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	graphics_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	return_button.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _on_audio_pressed():
 	_load_settings_scene(AUDIO_SCENE)
@@ -47,6 +58,7 @@ func _on_return_pressed():
 
 	# Show the main settings menu again
 	$VBoxContainer.visible = true  # Show buttons again
+	
 
 # Function to load different settings UIs
 func _load_settings_scene(scene_path):
@@ -86,3 +98,15 @@ func _load_settings_scene(scene_path):
 	# Debugging output
 	print("Children count in settings_container AFTER adding:", settings_container.get_child_count())
 	print("New scene visibility:", new_scene.visible, "Size:", new_scene.size)
+	
+	
+# Function to open the Settings Menu and track which menu opened it
+func open_settings(from_menu):
+	# Check if a menu (Pause Menu or Main Menu) opened the settings
+	if from_menu != null:
+		previous_menu = from_menu  # ✅ Store reference to the menu that opened Settings
+		#print("✅ Settings opened from:", previous_menu.name)  # Debugging output
+
+	# ✅ Ensure the Settings Menu is properly displayed
+	self.visible = true  # Make sure the settings menu is visible
+	self.move_to_front()  # ✅ Bring it above other UI elements to ensure it's interactable
