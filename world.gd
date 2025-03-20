@@ -68,12 +68,12 @@ func trigger_game_over(victory: bool):
 	get_tree().paused = true  # Pausar el juego
 
 	var screen_instance = game_over_screen.instantiate()
-	add_child(screen_instance)
+	canvas_layer.add_child(screen_instance)
+	screen_instance.process_mode = Node.PROCESS_MODE_ALWAYS
 
 	# Asegurar que el mensaje siempre se centre correctamente
-	screen_instance.message_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	screen_instance.message_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	screen_instance.message_label.size = Vector2(400, 100)  # Ajusta tamaño fijo para evitar desajustes
+	screen_instance.set_anchors_preset(Control.PRESET_CENTER)
+	screen_instance.position = Vector2(0, 0)
 
 	if victory:
 		screen_instance.set_message("¡Victoria!")
