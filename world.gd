@@ -18,8 +18,7 @@ func _process(delta):
 		
 		var Bossdistance = Player.global_position.distance_to(Boss.global_position)
 		if Bossdistance <= attack_distance_player:
-			Boss.set_Boss_health(Player.get_player_attack())
-			Boss.update_health(Boss.get_Boss_health())
+			Boss.take_damage(Player.get_player_attack())
 		for demon in EnemySpawner.spawned_demons:
 			var distance = Player.global_position.distance_to(demon.global_position)
 			

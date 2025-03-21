@@ -1,17 +1,20 @@
-extends Node
-
+extends Node2D
 class_name State
 
-signal Transitioned
+@onready var player = owner.get_parent().find_child("Player")
+@onready var animation_player = owner.find_child("AnimationPlayer")
 
-func Enter():
+func _ready():
 	pass
 
-func Exit():
+func enter():
 	pass
 
-func Update(_delta: float):
+func exit():
 	pass
 
-func Physics_update(_delta: float):
+func transition():
 	pass
+
+func _physics_process(delta):
+	transition()
