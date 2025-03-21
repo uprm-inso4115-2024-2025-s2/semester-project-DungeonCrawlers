@@ -8,6 +8,7 @@ enum State { IDLE, CHASE, DEAD }
 @export var player_detection_range: float = 700.0
 @export var health: int = 100 
 
+var summons_list = [] 
 signal boss_died
 var current_state = State.IDLE
 var player: CharacterBody2D = null
@@ -31,7 +32,7 @@ func _process(delta):
 			
 		State.DEAD:
 			play_animation("death")
-			
+		
 
 func change_state(new_state):
 	if current_state != new_state:
@@ -60,6 +61,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
 		emit_signal("boss_died")
 		queue_free()
+		cleanup_summons()
 
 func throw_sword():
 	var sword = preload("res://sword_projectile.tscn").instantiate()
@@ -83,8 +85,12 @@ func summon_mobs():
 		var mob = preload("res://Mobs/Enemies/enemy_2D.tscn").instantiate()
 		mob.global_position = global_position + Vector2(randf_range(-30, 30), randf_range(-30, 30))
 		get_parent().add_child(mob)
+		summons_list.append(mob)
 		await get_tree().create_timer(1.0).timeout
-
+func cleanup_summons():
+	for mob in summons_list:
+		mob.queue_free()  # Remove the mob from the scene
+	summons_list.clear()
 func update_health_bar(new_health):
 	var health_percent = (float(max_health - new_health)*.20)
 	foreground_bar.size.x = (foreground_bar.size.x - health_percent)
