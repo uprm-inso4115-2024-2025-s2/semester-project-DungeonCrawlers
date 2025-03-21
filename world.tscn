@@ -156,6 +156,7 @@ tile_map_data = PackedByteArray("AAAEAPr/BAAPAAUAAAAFAPn/AQAAAAAAAAAFAPr/AQAAAAA
 tile_set = ExtResource("3_yeq46")
 
 [node name="Boss" parent="." instance=ExtResource("3_rljpm")]
+position = Vector2(6, -1)
 
 [node name="BiggieChungus" parent="." instance=ExtResource("2_qrjl8")]
 texture_filter = 1

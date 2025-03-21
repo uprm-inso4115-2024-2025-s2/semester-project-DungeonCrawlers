@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 enum State { IDLE, CHASE, DEAD }
-
+@onready var foreground_bar = $AnimatedSprite2D/Foreground_bar
+@export var max_health = 100
 @export var speed: float = 10.0
 @export var player_detection_range: float = 700.0
 @export var health: int = 100  # Add health for death state
@@ -47,6 +48,7 @@ func play_animation(anim_name):
 
 func take_damage(amount):
 	health -= amount
+	update_health_bar(health)
 	if health <= 0:
 		change_state(State.DEAD)
 
@@ -62,14 +64,19 @@ func throw_sword():
 	get_parent().add_child(sword)
 	await get_tree().create_timer(10.0).timeout  # Cooldown before next throw
 func should_attack():
-	return global_position.distance_to(player.global_position) < 100 and randf() < 0.02
+	return global_position.distance_to(player.global_position) < 100 and randf() < 0.002
 
 func should_summon():
-	return randf() < 0.01
+	return randf() < 0.0001
 
 func summon_mobs():
-	for i in range(1):
+	for i in range(2):
 		var mob = preload("res://Mobs/Enemies/enemy_2D.tscn").instantiate()
 		mob.global_position = global_position + Vector2(randf_range(-30, 30), randf_range(-30, 30))
 		get_parent().add_child(mob)
-		await get_tree().create_timer(1000000000000.0).timeout  # Cooldown
+		await get_tree().create_timer(100.0).timeout  # Cooldown
+
+func update_health_bar(new_health):
+	var health_percent = (float(max_health - new_health)*.20)
+	foreground_bar.size.x = (foreground_bar.size.x - health_percent)
+	max_health = new_health
