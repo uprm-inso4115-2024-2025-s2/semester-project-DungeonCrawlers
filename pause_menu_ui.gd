@@ -9,6 +9,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		#print("ESC Pressed")  # Debug print
 		toggle_pause()
+	elif event.is_action_pressed("how_to_play") and visible:  
+		toggle_pause()
 
 func toggle_pause() -> void:
 	if visible:

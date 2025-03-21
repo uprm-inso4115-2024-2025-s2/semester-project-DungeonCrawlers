@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c13bulj4fugkk"]
+[gd_scene load_steps=7 format=3 uid="uid://c13bulj4fugkk"]
 
 [ext_resource type="Texture2D" uid="uid://c3iklok304slf" path="res://How To Play Assets/Keyboard Pixel art.png" id="1_2cmaq"]
+[ext_resource type="Script" path="res://how_to_play.gd" id="1_41gtu"]
 [ext_resource type="FontFile" uid="uid://cupqpc32mu1s5" path="res://How To Play Assets/MinecraftRegular-Bmg3.otf" id="2_djfd5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jem2n"]
@@ -21,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_41gtu")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -124,6 +126,6 @@ offset_top = 98.0
 offset_right = 306.0
 offset_bottom = 171.0
 scale = Vector2(0.744566, 0.846007)
-text = "press \"Esc\" to return to the game."
+text = "press \"H\" to return to the game."
 label_settings = SubResource("LabelSettings_o10qm")
 autowrap_mode = 2
