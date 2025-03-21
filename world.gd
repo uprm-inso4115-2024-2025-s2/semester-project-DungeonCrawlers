@@ -53,10 +53,24 @@ func _process(delta):
 	$Player/PlayerHealthBar.update_health(Player.get_player_health())
 
 #NOTE: Esto que anadi reconoce el esc key para activar el pause menu
+# func _input(event):
+# 	if event.is_action_pressed("ui_cancel"):  # Detect ESC key press
+# 		if pause_menu:
+# 			pause_menu.toggle_pause()
+# 		#Debugging
+# 		#else:
+# 			#print("ERROR: Pause Menu not found in the scene!")
+# 		elif event.is_action_pressed("how_to_play"):
+# 			get_tree().paused = true
+# 			get_tree().change_scene_to_file("res://How_To_Play.tscn")  # Adjust path if different
+
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):  # Detect ESC key press
+	if event.is_action_pressed("ui_cancel"):  
+		# ESC
 		if pause_menu:
 			pause_menu.toggle_pause()
-		#Debugging
-		#else:
-			#print("ERROR: Pause Menu not found in the scene!")
+			
+	elif event.is_action_pressed("how_to_play"):  
+		# H
+		get_tree().paused = true
+		get_tree().change_scene_to_file("res://how_to_play.tscn")

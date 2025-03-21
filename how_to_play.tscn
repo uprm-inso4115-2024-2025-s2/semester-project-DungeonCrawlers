@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://c13bulj4fugkk"]
+
+[ext_resource type="Texture2D" uid="uid://c3iklok304slf" path="res://How To Play Assets/Keyboard Pixel art.png" id="1_2cmaq"]
+[ext_resource type="FontFile" uid="uid://cupqpc32mu1s5" path="res://How To Play Assets/MinecraftRegular-Bmg3.otf" id="2_djfd5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jem2n"]
+bg_color = Color(0.709555, 0.665003, 0.595101, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hrpoj"]
+font = ExtResource("2_djfd5")
+font_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o10qm"]
+font = ExtResource("2_djfd5")
+font_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+
+[node name="How To Play" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 160.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jem2n")
+
+[node name="Ekey" type="Sprite2D" parent="Panel"]
+position = Vector2(173, 97)
+scale = Vector2(0.465908, 0.432692)
+texture = ExtResource("1_2cmaq")
+region_enabled = true
+region_rect = Rect2(125, 136, 44, 52)
+
+[node name="EnterKey" type="Sprite2D" parent="Panel"]
+position = Vector2(153, 137)
+scale = Vector2(0.66, 0.461538)
+texture = ExtResource("1_2cmaq")
+region_enabled = true
+region_rect = Rect2(20, 136, 100, 52)
+
+[node name="WASD" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 29.0
+offset_right = 148.0
+offset_bottom = 136.0
+scale = Vector2(0.4871, 0.430543)
+
+[node name="Wkey" type="Sprite2D" parent="Panel/WASD"]
+position = Vector2(68, 26)
+texture = ExtResource("1_2cmaq")
+region_enabled = true
+region_rect = Rect2(20, 16, 44, 52)
+
+[node name="Dkey" type="Sprite2D" parent="Panel/WASD"]
+position = Vector2(114, 80)
+texture = ExtResource("1_2cmaq")
+region_enabled = true
+region_rect = Rect2(124, 16, 44, 52)
+
+[node name="Akey" type="Sprite2D" parent="Panel/WASD"]
+position = Vector2(22, 80)
+texture = ExtResource("1_2cmaq")
+region_enabled = true
+region_rect = Rect2(72, 16, 44, 52)
+
+[node name="Skey" type="Sprite2D" parent="Panel/WASD"]
+position = Vector2(68, 80)
+texture = ExtResource("1_2cmaq")
+region_enabled = true
+region_rect = Rect2(176, 16, 44, 52)
+
+[node name="How To Play Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 7.0
+offset_right = 189.0
+offset_bottom = 30.0
+text = "How To Play"
+label_settings = SubResource("LabelSettings_hrpoj")
+
+[node name="WASDExp" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 30.0
+offset_right = 322.0
+offset_bottom = 70.0
+scale = Vector2(0.744566, 0.846007)
+text = "Use the \"WASD\" keys to move your character.
+"
+label_settings = SubResource("LabelSettings_o10qm")
+autowrap_mode = 2
+
+[node name="EExp" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 84.0
+offset_right = 219.0
+offset_bottom = 119.0
+scale = Vector2(0.744566, 0.846007)
+text = "Use the \"E\" key to interact with the world."
+label_settings = SubResource("LabelSettings_o10qm")
+autowrap_mode = 2
+
+[node name="EnterExp" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 121.0
+offset_right = 176.0
+offset_bottom = 156.0
+scale = Vector2(0.744566, 0.846007)
+text = "Use the \"Enter\" key to attack."
+label_settings = SubResource("LabelSettings_o10qm")
+autowrap_mode = 2
+
+[node name="EExp2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 98.0
+offset_right = 306.0
+offset_bottom = 171.0
+scale = Vector2(0.744566, 0.846007)
+text = "press \"Esc\" to return to the game."
+label_settings = SubResource("LabelSettings_o10qm")
+autowrap_mode = 2
