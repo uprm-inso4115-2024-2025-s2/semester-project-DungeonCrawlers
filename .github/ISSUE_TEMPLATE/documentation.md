@@ -10,8 +10,8 @@ assignees: ''
 # Objective
 Provide an objective for the task (What would the task accomplish if implemented?)
 
-### Guidelines and Feedback
-Paste *everything* that the professor has said about this topic here. This includes evaluation criteria, guidelines, and feedback. If this is a lecture topic task, either specify the date that the professor talked about it or the presentation and slides about the topic.
+### Guidelines, Feedback, and Lectures
+Paste *everything* that the professor has said about this topic here. This includes evaluation criteria, guidelines, and feedback. If this is a lecture topic task, specify the date that the professor talked about it and/or the presentation and slides about the topic.
 
 ### Checklist
 Take the content of the above section and create a markdown checklist with every point that must be accounted for based on what the professor has said. You may use a large language model to generate this checklist by copy-pasting the text from guidelines, feedback, and/or presentations (but read through the checklist to make sure everything is appropriate). Then, while you write the documentation, check each point that your documentation complies with by editing this description. Before you mark this issue as completed, make sure you considered every point from guidelines, feedback, or lectures.

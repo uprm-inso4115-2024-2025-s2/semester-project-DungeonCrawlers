@@ -14,3 +14,4 @@ func _ready():
 
 func _process(delta):
 	miniMapPlayer.position = player.position
+

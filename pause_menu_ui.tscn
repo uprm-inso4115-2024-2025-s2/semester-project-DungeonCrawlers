@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6oklpo7cs1hl"]
+
+[ext_resource type="Script" path="res://pause_menu_ui.gd" id="1_wojq3"]
+[ext_resource type="Texture2D" uid="uid://ber21ddw62ix7" path="res://pause_menu_assets/In-Pause Menu Design (1).png" id="2_jh751"]
+
+[node name="PauseMenuUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wojq3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.00717
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.000414286
+anchor_top = 0.006
+anchor_right = 1.004
+anchor_bottom = 1.0
+offset_left = -0.116
+offset_top = 0.0399981
+offset_right = -0.120026
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jh751")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Resume" type="Button" parent="Background"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18832
+anchor_top = 0.264038
+anchor_right = 0.522747
+anchor_bottom = 0.440396
+offset_left = 0.0819931
+offset_top = 0.0179987
+offset_right = 0.108002
+offset_bottom = -0.0230007
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings" type="Button" parent="Background"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.184762
+anchor_top = 0.459006
+anchor_right = 0.533423
+anchor_bottom = 0.635365
+offset_left = 0.0819931
+offset_top = 0.0179987
+offset_right = 0.108002
+offset_bottom = -0.0230007
+metadata/_edit_use_anchors_ = true
+
+[node name="Exit" type="Button" parent="Background"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18832
+anchor_top = 0.635088
+anchor_right = 0.522747
+anchor_bottom = 0.817736
+offset_left = 0.0819931
+offset_top = 0.0209961
+offset_right = 0.108002
+offset_bottom = -0.0200043
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Background/Resume" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="Background/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Background/Exit" to="." method="_on_exit_pressed"]

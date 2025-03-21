@@ -11,8 +11,8 @@ var move_direction = Vector2.ZERO
 
 func get_Demon_health() -> int:
 	return Demon_health
-
-func set_Demon_health(Damage_to_take_away) -> void:
+	
+func set_Demon_health(Damage_to_take_away) ->void:
 	Demon_health = max(0, Demon_health - Damage_to_take_away)
 	update_health(Demon_health)  # Asegurar que la barra de salud se actualiza correctamente
 	if Demon_health == 0:
