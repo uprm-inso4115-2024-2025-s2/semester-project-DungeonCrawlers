@@ -10,7 +10,7 @@ func _ready():
 	pass
 
 func _input(event):
-	if player_near and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT::
+	if player_near and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		toggle_switch()
 
 func toggle_switch():
