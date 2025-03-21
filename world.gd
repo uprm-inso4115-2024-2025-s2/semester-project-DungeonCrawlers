@@ -9,6 +9,7 @@ var attack_distance_enemy = 30.0
 @onready var game_over_screen = preload("res://UI/game_over_screen.tscn")
 @onready var pause_menu = get_node_or_null("PauseMenuUI")
 
+
 var enemy_attack_cooldowns = {}
 var player_attack_cooldown = 0.0
 var game_over = false
@@ -52,6 +53,7 @@ func _process(delta):
 
 			# Update the cooldown timer for this demon
 			enemy_attack_cooldowns[nearest_demon] = current_time
+
 	#if Input.is_action_just_pressed("ui_m"):
 		#canvas_layer.visible = !canvas_layer.visible
 	#$Player/PlayerHealthBar.update_health(Player.get_player_health())
@@ -88,6 +90,8 @@ func trigger_game_over(victory: bool):
 	else:
 		screen_instance.set_message("Game Over")
 		print("Game Over. Has sido derrotado.")
+
+
 #NOTE: Esto que anadi reconoce el esc key para activar el pause menu
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):  # Detect ESC key press
