@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6pnkpupuhda"
-path="res://.godot/imported/icons.svg-2bd80756ac675a5d33034741dff964c3.ctex"
+uid="uid://bbx5ib6gqdwia"
+path="res://.godot/imported/exit_unpressed.png-6376cece8eb3ee7e573d06bd1a0130dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/assets/MinimalUI/icons.svg"
-dest_files=["res://.godot/imported/icons.svg-2bd80756ac675a5d33034741dff964c3.ctex"]
+source_file="res://pause_menu_assets/exit_unpressed.png"
+dest_files=["res://.godot/imported/exit_unpressed.png-6376cece8eb3ee7e573d06bd1a0130dd.ctex"]
 
 [params]
 
@@ -31,7 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
+detect_3d/compress_to=0

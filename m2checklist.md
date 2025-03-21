@@ -29,44 +29,44 @@ This checklist includes both the professor's feedback and the milestone 2 guidel
 ## 2. Descriptive Part
 
 ### 2.1 Domain Description
+- [ ] Domain functions are more thoroughly described, especially beyond basic concepts like player movement.
+- [ ] The relationship between enemy and NPC is clarified and defined.
+- [ ] Clear definitions are provided for actions, events, and behaviors, specifying how each operates and relates to others.
 
 #### 2.1.1 Domain Rough Sketch
+- [ ] Terminology is validated, ensuring concepts like "rooms" and "corridors" are used consistently, or simplified.
 
 #### 2.1.2 Terminology
-- [ ] Terminology is validated, ensuring concepts like "rooms" and "corridors" are used consistently, or simplified.
 - [ ] The terminology section includes not just entities but also actions, events, and behaviors.
-- [ ] The relationship between enemy and NPC is clarified and defined.
 
 #### 2.1.4 Domain Narrative
+- [ ] The event "Loot Discovery" is clearly defined, identifying what constitutes the event and how it differs from actions.
 
 #### 2.1.5 Events, Actions, and Behaviors
-- [X] The event "Loot Discovery" is clearly defined, identifying what constitutes the event and how it differs from actions.
 - [ ] Distinctions between actions and events are clearly outlined and correctly described.
 - [ ] Time-dependent events (e.g., "enemies are created and killed") are accurately represented as events or behaviors.
 - [ ] The distinction between actions and events in the project is reviewed and corrected where necessary.
-- [ ] Function signatures are integrated into action/operation descriptions, not kept in separate sections.
-- [ ] Functions align with their descriptions. *For example*, if "move" checks for collisions, it should reflect that in the function.
+- [X] Function signatures are integrated into action/operation descriptions, not kept in separate sections.
+- [ ] Functions align with their descriptions. For example, if "move" checks for collisions, it should reflect that in the function.
 - [X] The relationship between the attack and dodge functions is clearly defined.
 - [X] The role of the enemy and conditions in functions like `revive` is clarified.
 - [X] `InteractionResult` is replaced by boolean
-- [ ] Domain functions are more thoroughly described, especially beyond basic concepts like player movement.
-- [ ] Clear definitions are provided for actions, events, and behaviors, specifying how each operates and relates to others.
 
 ### 2.2 Requirements
 - [ ] The requirements are connected to the epics clearly.
-- [ ] Requirements are clearly defined, measurable, and specific (e.g., avoid vague terms like "party option").
 
 #### 2.2.2 Personas
 - [X] Personas are vividly described with detailed background and goals.
 
 #### 2.2.3 Domain Requirements
-- [X] Domain requirements are fine-grained, not merely feature descriptions.
+- [ ] Requirements are clearly defined, measurable, and specific (e.g., avoid vague terms like "party option").
+- [ ] Domain requirements are fine-grained, not merely feature descriptions.
 
 #### 2.2.4 Interface Requirements
 - [ ] Specific points like collision shapes and sprites are explained in terms of how they aid the development.
 
 #### 2.2.5 Machine Requirements
-- [X] Walkthroughs or other validation methods for requirements are included to ensure the system meets the intended goals.
+- [ ] Walkthroughs or other validation methods for requirements are included to ensure the system meets the intended goals.
 
 
 ## 3. Analytic Part
@@ -77,10 +77,9 @@ This checklist includes both the professor's feedback and the milestone 2 guidel
 - [ ] Competing goals are identified, with examples of derived requirements.
 
 ### 3.2 Validation and Verification
+- [ ] The special class topics from the testing course should be related to the requirements course.
 - [ ] Evaluation criteria are developed with team input.
 - [ ] Requirements are prioritized using team input, and AHP (Analytic Hierarchy Process) is applied (e.g., using the [AHP tool on GitHub](https://github.com/gluc/ahp)).
-  - [ ] Team input
-  - [X] AHP
 - [ ] At least three example requirements are discussed in terms of satisfiability and feasibility.
 
 ---
@@ -90,20 +89,18 @@ This checklist includes both the professor's feedback and the milestone 2 guidel
 ### Stakeholder Identification
 - [ ] Initial stakeholders are identified based on domain, requirements, usage scenarios, and growth trajectories.
 - [ ] Each stakeholder’s relevance to the project is explained.
-- [X] A plan is outlined for identifying additional stakeholders.
+- [ ] A plan is outlined for identifying additional stakeholders.
 - [ ] Resources for finding more stakeholders are identified.
 - [ ] A method for integrating additional stakeholder perspectives into the project is established.
 
 ### Personas
-- [X] Personas are created for relevant stakeholder groups.
+- [ ] Personas are created for relevant stakeholder groups.
 - [ ] Personas cover different aspects of the project (e.g., domain personas, requirement personas, users, hosting company employees).
 - [ ] More important stakeholder groups have detailed personas.
 
 ### Domain and Requirements Acquisition
 - [X] A specific plan for domain and requirements acquisition is outlined.
 - [X] The plan includes more than generic activities (e.g., consulting relevant literature, conducting interviews).
-- [ ] A structured questionnaire for stakeholder interviews is included (e.g., sample questions, format).
-- [ ] Domain acquisition methods (e.g., surveys, document analysis) are documented separately from requirements elicitation methods (e.g., stakeholder workshops, prototyping).
 - [ ] The plan explains how meaningful requirements will be documented.
 - [X] Relevant resources are identified, with justification for their inclusion.
 - [X] A strategy for incorporating new findings into domain understanding is outlined.
