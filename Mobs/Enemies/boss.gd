@@ -76,6 +76,8 @@ func should_summon():
 func summon_mobs():
 	if has_summoned:
 		return
+	health = 100
+	update_health_bar(health)
 	for i in range(2):
 		has_summoned = true
 		var mob = preload("res://Mobs/Enemies/enemy_2D.tscn").instantiate()
