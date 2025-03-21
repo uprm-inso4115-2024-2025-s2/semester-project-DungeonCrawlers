@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
 enum State { IDLE, CHASE, DEAD }
+@onready var has_summoned: bool
 @onready var foreground_bar = $AnimatedSprite2D/Foreground_bar
 @export var max_health = 100
 @export var speed: float = 10.0
 @export var player_detection_range: float = 700.0
-@export var health: int = 100  # Add health for death state
+@export var health: int = 100 
 
+signal boss_died
 var current_state = State.IDLE
 var player: CharacterBody2D = null
 
@@ -25,8 +27,7 @@ func _process(delta):
 			move_towards_player()
 			if should_attack():
 				throw_sword()
-			if should_summon():
-				summon_mobs()
+			
 			
 		State.DEAD:
 			play_animation("death")
@@ -49,12 +50,15 @@ func play_animation(anim_name):
 func take_damage(amount):
 	health -= amount
 	update_health_bar(health)
+	if health <= 50:
+		summon_mobs()
 	if health <= 0:
 		change_state(State.DEAD)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
+		emit_signal("boss_died")
 		queue_free()
 
 func throw_sword():
@@ -62,19 +66,22 @@ func throw_sword():
 	sword.global_position = global_position
 	sword.set_direction(player.global_position)
 	get_parent().add_child(sword)
-	await get_tree().create_timer(10.0).timeout  # Cooldown before next throw
+	await get_tree().create_timer(10.0).timeout
 func should_attack():
 	return global_position.distance_to(player.global_position) < 100 and randf() < 0.002
 
 func should_summon():
-	return randf() < 0.0001
+	return true
 
 func summon_mobs():
+	if has_summoned:
+		return
 	for i in range(2):
+		has_summoned = true
 		var mob = preload("res://Mobs/Enemies/enemy_2D.tscn").instantiate()
 		mob.global_position = global_position + Vector2(randf_range(-30, 30), randf_range(-30, 30))
 		get_parent().add_child(mob)
-		await get_tree().create_timer(100.0).timeout  # Cooldown
+		await get_tree().create_timer(1.0).timeout
 
 func update_health_bar(new_health):
 	var health_percent = (float(max_health - new_health)*.20)
