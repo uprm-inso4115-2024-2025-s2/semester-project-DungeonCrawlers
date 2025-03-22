@@ -14,8 +14,16 @@ func get_Demon_health() -> int:
 	
 func set_Demon_health(Damage_to_take_away) ->void:
 	Demon_health = max(0, Demon_health - Damage_to_take_away)
+	update_health(Demon_health)  # Asegurar que la barra de salud se actualiza correctamente
+	if Demon_health == 0:
+		if get_parent().EnemySpawner.spawned_demons.has(self):
+			get_parent().EnemySpawner.spawned_demons.erase(self)  # Remover de la lista de enemigos
+			queue_free()  # Eliminar enemigo de la escena
+			# Solo verificar victoria si el enemigo realmente fue eliminado
+			if get_parent().EnemySpawner.spawned_demons.size() == 0:
+				get_parent().trigger_game_over(true)  # Notificar victoria
 
-func get_Demon_attack()-> int:
+func get_Demon_attack() -> int:
 	return Demon_attack
 
 func update_health(new_health):
