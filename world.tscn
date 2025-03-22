@@ -210,7 +210,8 @@ position = Vector2(-104, 8)
 visible = false
 player = NodePath("../Player")
 
-[node name="PauseMenuUI" parent="CanvasLayer" instance=ExtResource("21_blxne")]
+[node name="PauseMenuUI" parent="CanvasLayer" instance=ExtResource("2_r3qjk")]
+
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -323,9 +324,11 @@ debug_color = Color(0.166832, 0.64402, 0, 0.42)
 visible = false
 
 [node name="HowToPlay" type="CanvasLayer" parent="."]
-
 [node name="How To Play" parent="HowToPlay" instance=ExtResource("22_8sqcf")]
 process_mode = 3
+
+[node name="GameOver" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_5uf2j")]
+player = NodePath("../Player")
 
 [connection signal="body_entered" from="Traps" to="Player" method="_on_traps_body_entered"]
 [connection signal="body_entered" from="Traps" to="Traps" method="_on_body_entered"]
