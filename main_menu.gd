@@ -44,8 +44,17 @@ func _ready():
 	$VBoxContainer/Options.connect("pressed", Callable(self, "_on_options_pressed"))
 
 
-func _on_start_pressed():
-	get_tree().change_scene_to_file("res://world.tscn") 
+func _on_start_pressed() -> void:
+	var scene_path = "res://world.tscn"  # Ensure this matches the actual scene path
+	if get_tree().paused:
+		print("🔸 Game was paused, unpausing now...")
+		get_tree().paused = false  # Ensure the game is unpaused
+		
+#		NOTA: Las modificaciones hacen que cuando se regrese de pause menu a esta pantalla,
+#			  y se vuelva a click start reinicie el juego. 
+
+	var result = get_tree().change_scene_to_file(scene_path)
+
 
 func _on_quit_pressed():
 	get_tree().quit()

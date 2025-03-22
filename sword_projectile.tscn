@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://tkv5xylsrinh"]
+
+[ext_resource type="Script" path="res://sword_projectile.gd" id="1_lc15x"]
+[ext_resource type="Texture2D" uid="uid://byinwecoak7my" path="res://0x72_DungeonTilesetII_v1.7/frames/weapon_golden_sword.png" id="2_qo512"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02cp4"]
+size = Vector2(26, 8)
+
+[node name="SwordProjectile" type="Area2D"]
+script = ExtResource("1_lc15x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_02cp4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.50282, 0.750848)
+rotation = 1.5708
+scale = Vector2(0.84983, 1.22753)
+texture = ExtResource("2_qo512")
