@@ -96,12 +96,4 @@ func trigger_game_over(victory: bool):
 
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):  
-		# ESC
-		if pause_menu:
-			pause_menu.toggle_pause()
-
-	elif event.is_action_pressed("how_to_play"):  
-		# H
-		get_tree().paused = true
-		get_tree().change_scene_to_file("res://how_to_play.tscn")
+	return

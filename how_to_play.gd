@@ -10,7 +10,6 @@ func _input(event: InputEvent) -> void:
 		toggle_htp_pause()
 	elif event.is_action_pressed("ui_cancel") and visible:
 		toggle_htp_pause()
-
 func toggle_htp_pause() -> void:
 	if visible:
 		hide()

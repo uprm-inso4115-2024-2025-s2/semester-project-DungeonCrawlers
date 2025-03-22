@@ -7,11 +7,9 @@ func _ready() -> void:
 # Detect when ESC is pressed
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		#print("ESC Pressed")  # Debug print
 		toggle_pause()
-	elif event.is_action_pressed("how_to_play") and visible:  
+	elif event.is_action_pressed("how_to_play") and visible: 
 		toggle_pause()
-
 func toggle_pause() -> void:
 	if visible:
 		hide()
@@ -19,8 +17,6 @@ func toggle_pause() -> void:
 	else:
 		#print("📌 Showing Pause Menu")  # Debugging
 		show()
-		move_to_front()  # Ensure Pause Menu is the top UI element
-		modulate.a = 1  # Ensure it is fully visible
 		get_tree().paused = true   # Pause game
 
 
