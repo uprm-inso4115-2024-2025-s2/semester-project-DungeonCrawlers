@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cjk6ugy6xve2s"]
+[gd_scene load_steps=35 format=4 uid="uid://cjk6ugy6xve2s"]
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -20,7 +20,8 @@
 [ext_resource type="Script" path="res://door.gd" id="18_70ij5"]
 [ext_resource type="Script" path="res://server.gd" id="18_ggr2c"]
 [ext_resource type="Texture2D" uid="uid://xld4tpa6fi25" path="res://0x72_DungeonTilesetII_v1.7/atlas_walls_high-16x32.png" id="18_h4wj1"]
-[ext_resource type="PackedScene" uid="uid://c6oklpo7cs1hl" path="res://Menus/pause_menu_ui.tscn" id="21_blxne"]
+[ext_resource type="PackedScene" uid="uid://c6oklpo7cs1hl" path="res://pause_menu_ui.tscn" id="21_blxne"]
+[ext_resource type="PackedScene" uid="uid://o5dyjipitmjr" path="res://settings_menu.tscn" id="21_tglox"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jurpl"]
 animations = [{
@@ -174,6 +175,7 @@ texture_filter = 1
 position = Vector2(96, -8)
 
 [node name="MobSpawning" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
 limit_smoothed = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -199,6 +201,7 @@ scale = Vector2(2, 2)
 disable_mode = 2
 
 [node name="PlayerHealthBar" parent="Player" instance=ExtResource("12_vhryo")]
+visible = false
 position = Vector2(0, 8)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_ggghl")]
@@ -317,10 +320,17 @@ scale = Vector2(1.45, 1.45)
 shape = SubResource("RectangleShape2D_uw1ag")
 debug_color = Color(0.166832, 0.64402, 0, 0.42)
 
-[node name="PauseCanva" type="CanvasLayer" parent="."]
+[node name="MenusCanvas" type="CanvasLayer" parent="."]
 
-[node name="PauseMenuUI" parent="PauseCanva" instance=ExtResource("21_blxne")]
+[node name="PauseMenuUI" parent="MenusCanvas" instance=ExtResource("21_blxne")]
 visible = false
+
+[node name="SettingsMenu" parent="MenusCanvas" instance=ExtResource("21_tglox")]
+visible = false
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1.0
+offset_bottom = 3.0
 
 [node name="GameOver" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_5uf2j")]
 player = NodePath("../Player")
