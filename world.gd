@@ -15,17 +15,22 @@ var enemy_attack_cooldowns = {}
 var player_attack_cooldown = 0.0
 var game_over = false
 
+func _ready():
+	Boss.connect("boss_died", Callable(self, "_on_boss_died"))
+func _on_boss_died():
+	Boss = null  # Set Boss to null to prevent further interactions
+	print("Boss has died and is no longer valid!")
+
 func _process(delta):
 	if game_over:
 		return  # Si el juego ya terminó, evitamos más procesamiento
 
 	var current_time = Time.get_ticks_msec() / 1000.0
 	if Input.is_action_just_pressed("attack") and current_time - player_attack_cooldown >= 0.5:
-		
-		var Bossdistance = Player.global_position.distance_to(Boss.global_position)
-		if Bossdistance <= attack_distance_player:
-			Boss.set_Boss_health(Player.get_player_attack())
-			Boss.update_health(Boss.get_Boss_health())
+		if Boss:
+			var Bossdistance = Player.global_position.distance_to(Boss.global_position)
+			if Bossdistance <= attack_distance_player:
+				Boss.take_damage(Player.get_player_attack())
 		for demon in EnemySpawner.spawned_demons:
 			var distance = Player.global_position.distance_to(demon.global_position)
 			
