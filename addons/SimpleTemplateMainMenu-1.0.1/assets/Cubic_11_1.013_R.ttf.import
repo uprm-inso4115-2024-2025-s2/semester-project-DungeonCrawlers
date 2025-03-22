@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dsisvfrdgqau"
-path="res://.godot/imported/Cubic_11_1.013_R.ttf-f27441867f653c2eb9c5ff17c174c923.fontdata"
+path="res://.godot/imported/Cubic_11_1.013_R.ttf-97b0e433f55144e576d880e813944d48.fontdata"
 
 [deps]
 
-source_file="res://addons (ignore)/SimpleTemplateMainMenu-1.0.1/assets/Cubic_11_1.013_R.ttf"
-dest_files=["res://.godot/imported/Cubic_11_1.013_R.ttf-f27441867f653c2eb9c5ff17c174c923.fontdata"]
+source_file="res://addons/SimpleTemplateMainMenu-1.0.1/assets/Cubic_11_1.013_R.ttf"
+dest_files=["res://.godot/imported/Cubic_11_1.013_R.ttf-97b0e433f55144e576d880e813944d48.fontdata"]
 
 [params]
 
