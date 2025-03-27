@@ -8,6 +8,7 @@ var attack_distance_enemy = 30.0
 @onready var canvas_layer = $CanvasLayer
 @onready var game_over_screen = preload("res://UI/game_over_screen.tscn")
 @onready var pause_menu = get_node_or_null("PauseMenuUI")
+@onready var HowToPlayScene = $"HowToPlay/How To Play"
 
 
 var enemy_attack_cooldowns = {}
@@ -97,11 +98,7 @@ func trigger_game_over(victory: bool):
 		print("Game Over. Has sido derrotado.")
 
 
-#NOTE: Esto que anadi reconoce el esc key para activar el pause menu
+
+
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):  # Detect ESC key press
-		if pause_menu:
-			pause_menu.toggle_pause()
-		#Debugging
-		#else:
-			#print("ERROR: Pause Menu not found in the scene!")
+	return

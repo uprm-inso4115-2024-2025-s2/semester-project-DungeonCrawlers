@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyuuyutoko4t"
-path="res://.godot/imported/keyboard_art.png.png-96ba67aabfc3008229a0b1cd5a9c65af.ctex"
+uid="uid://d1iui6rmwal7"
+path="res://.godot/imported/Keyboard Pixel art.png-c09e00ca7f0a75e9d0a4f66d3b68b4f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/keyboard_art.png.png"
-dest_files=["res://.godot/imported/keyboard_art.png.png-96ba67aabfc3008229a0b1cd5a9c65af.ctex"]
+source_file="res://how_to_play_Asset/Keyboard Pixel art.png"
+dest_files=["res://.godot/imported/Keyboard Pixel art.png-c09e00ca7f0a75e9d0a4f66d3b68b4f7.ctex"]
 
 [params]
 
