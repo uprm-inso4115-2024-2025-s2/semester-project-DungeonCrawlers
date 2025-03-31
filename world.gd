@@ -9,6 +9,7 @@ var attack_distance_enemy = 30.0
 @onready var game_over_screen = preload("res://UI/game_over_screen.tscn")
 @onready var pause_menu = get_node_or_null("PauseMenuUI")
 @onready var HowToPlayScene = $"HowToPlay/How To Play"
+@onready var Room = $"room"
 
 
 var enemy_attack_cooldowns = {}
