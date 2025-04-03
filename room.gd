@@ -1,32 +1,31 @@
 extends Node2D
 
 class_name  room
-# Hay que cambiar el tamnano del cuarto al coorecto
-var room_size: Vector2 = Vector2(3, 3)  # Tamaño del room (ancho, alto)
+# Hay que cambiar el tamano del cuarto al correcto
+var room_size: Vector2 = Vector2(44,46)  # Tamaño del room (ancho, alto)
+var tile_size = 1;
 var matrix = []
 enum Side { TOP =1 , BOTTOM = 2, LEFT = 3, RIGHT = 4}
 var corridors = []
+var x = 0
+var y = 0
+
+func setxy(param_y, param_x ):
+	x = param_x
+	y = param_y
 
 func getScene():
 	return get_tree().get_current_scene();
 
-func getTopLeftCorner() -> Vector2: 
-	return Vector2(0, 0);
+func getTopLeftCorner(): 
+	return Vector2((0-x)*tile_size, (0-y)*tile_size);
 func getTopRightCorner(): 
-	return Vector2(room_size.x, 0)
+	return Vector2((room_size.x-x)*tile_size, (0-y)*tile_size)
 func getBottomLeftCorner():
-	return Vector2(0, room_size.y)
+	return Vector2((0-x)*tile_size, (room_size.y-y)*tile_size)
 func getBottomRightCorner():
-	return Vector2(room_size.x, room_size.y)
-#func getTopLeftCorner(): 
-	#return matrix[0][0];
-#func getTopRightCorner(): 
-	#return matrix[0][room_size.x]
-#func getBottomLeftCorner():
-	#return matrix[room_size.y][0]
-#func getBottomRightCorner():
-	#return matrix[room_size.y][room_size.x]
-	
+	return Vector2((room_size.x-x)*tile_size, (room_size.y-y)*tile_size)
+
 func getCorridors() -> Array:
 	return corridors; 
 
@@ -45,8 +44,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#print(matrix)
-	print(getTopRightCorner())
-	print(getScene())
-	print(getCorridors())
+	#print(x,y)
+	#print(getBottomRightCorner())
+	#print(getScene())
 	pass

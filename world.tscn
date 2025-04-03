@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dcb5nu1sl5rfu" path="res://0x72_DungeonTilesetII_v1.7/atlas_floor-16x16.png" id="22_kby77"]
 [ext_resource type="Script" path="res://button.gd" id="23_icr6n"]
 [ext_resource type="PackedScene" uid="uid://cw1h2eu3qfr8q" path="res://how_to_play.tscn" id="25_35hra"]
-[ext_resource type="Script" path="res://room.gd" id="26_dqlsm"]
+[ext_resource type="PackedScene" uid="uid://dvon7uf2l7bs" path="res://room.tscn" id="26_xjyi0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jurpl"]
 animations = [{
@@ -376,8 +376,15 @@ visible = false
 [node name="GameOver" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_5uf2j")]
 player = NodePath("../Player")
 
-[node name="room" type="Node2D" parent="."]
-script = ExtResource("26_dqlsm")
+[node name="room" parent="." instance=ExtResource("26_xjyi0")]
+
+[node name="room" parent="room" instance=ExtResource("26_xjyi0")]
+
+[node name="room2" parent="room" instance=ExtResource("26_xjyi0")]
+
+[node name="room3" parent="room" instance=ExtResource("26_xjyi0")]
+
+[node name="room4" parent="room" instance=ExtResource("26_xjyi0")]
 
 [connection signal="body_entered" from="Traps" to="Player" method="_on_traps_body_entered"]
 [connection signal="body_entered" from="Traps" to="Traps" method="_on_body_entered"]
