@@ -14,7 +14,7 @@ var is_moving = false
 var last_direction = Vector2.RIGHT
 
 func _input(event):
-	if event.is_action_pressed("attack") and not attacking:
+	if event.is_action_pressed("player1_attack") and not attacking:
 		start_attack()
 		
 func _physics_process(delta):
