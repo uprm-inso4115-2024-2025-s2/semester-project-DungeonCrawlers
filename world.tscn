@@ -36,6 +36,9 @@ var player_health = 100
 var player_attack = 25
 
 @onready var target = position
+@onready var player1 = get_node(\"/root/World/Player\")  # Adjust the path to your player1 node
+@onready var camera = player1.get_node(\"Camera2D\")  # Adjust if the camera is in a different node
+
 # @onready var attack_sprite = $AttackSprite
 # @onready var attack_area = $AttackSprite/AttackArea
 
@@ -87,7 +90,23 @@ func _physics_process(delta):
 		$Weapon.scale.x = -0.5
 		$Weapon.position.x = -11
 		$PlayerRun.play()
+
+	# Clamp position to keep player within camera bounds
+	clamp_position()
 	move_and_slide()
+
+func clamp_position():
+	# Get the camera's boundaries
+	var camera_size = Vector2(camera.get_viewport().size) / camera.zoom
+	var p1_position = player1.position
+	var boundry_left = p1_position.x - camera_size.x / 7.5
+	var boundry_right = p1_position.x + camera_size.x / 7.5
+	var boundry_top = p1_position.y - camera_size.y / 7.5
+	var boundry_bottom = p1_position.y + camera_size.y / 7.5
+
+	# Clamp player position to camera boundaries
+	position.x = clamp(position.x, boundry_left, boundry_right)
+	position.y = clamp(position.y, boundry_top, boundry_bottom)
 
 func start_attack():
 
