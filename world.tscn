@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://cjk6ugy6xve2s"]
+[gd_scene load_steps=42 format=4 uid="uid://cjk6ugy6xve2s"]
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -25,7 +25,111 @@
 [ext_resource type="Texture2D" uid="uid://dcb5nu1sl5rfu" path="res://0x72_DungeonTilesetII_v1.7/atlas_floor-16x16.png" id="22_kby77"]
 [ext_resource type="Script" path="res://button.gd" id="23_icr6n"]
 [ext_resource type="PackedScene" uid="uid://cw1h2eu3qfr8q" path="res://how_to_play.tscn" id="25_35hra"]
-[ext_resource type="PackedScene" uid="uid://dvon7uf2l7bs" path="res://room.tscn" id="26_xjyi0"]
+[ext_resource type="PackedScene" path="res://room.tscn" id="26_xjyi0"]
+
+[sub_resource type="GDScript" id="GDScript_m2je8"]
+script/source = "extends CharacterBody2D
+
+@export var speed = 50
+@export var attack_offset = 0
+var player_health = 100
+var player_attack = 25
+
+@onready var target = position
+# @onready var attack_sprite = $AttackSprite
+# @onready var attack_area = $AttackSprite/AttackArea
+
+var attacking = false
+var is_moving = false
+var last_direction = Vector2.RIGHT
+
+func _input(event):
+	if event.is_action_pressed(\"attack\") and not attacking:
+		start_attack()
+		
+func _physics_process(delta):
+	velocity = Vector2.ZERO  # Reset velocity every frame
+	$PlayerRun.hide()
+	#Reset idle
+	$PlayerIdle.show()
+	$PlayerIdle.play()
+	# Handle movement input and adjust position
+	if Input.is_key_pressed(KEY_RIGHT):
+		velocity.x = speed
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.scale.x = 1
+		$PlayerIdle.scale.x = 1
+		$Weapon.scale.x = 0.5
+		$Weapon.position.x = 9
+		$PlayerRun.play()
+	
+	if Input.is_key_pressed(KEY_UP):
+		velocity.y -= speed 
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.play()
+	if Input.is_key_pressed(KEY_DOWN):
+		velocity.y += speed 
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.play()
+	if Input.is_key_pressed(KEY_LEFT):
+		velocity.x -= speed 
+		$PlayerIdle.stop()
+		$PlayerIdle.hide()
+		$PlayerRun.show()
+		$PlayerRun.scale.x = -1
+		$PlayerIdle.scale.x = -1
+		$Weapon.scale.x = -0.5
+		$Weapon.position.x = -11
+		$PlayerRun.play()
+	move_and_slide()
+
+func start_attack():
+
+	attacking = true
+	$Weapon/AttackAnimation.visible = true
+
+	$Weapon/AttackAnimation.scale = Vector2(1, 1)
+
+
+	$Weapon/AttackAnimation.position = last_direction * attack_offset
+
+
+	if abs(last_direction.x) > abs(last_direction.y):
+		$Weapon/AttackAnimation.rotation_degrees = 30
+		await get_tree().create_timer(0.10).timeout
+		$Weapon/AttackAnimation.rotation_degrees = 45
+		await get_tree().create_timer(0.10).timeout
+		$Weapon/AttackAnimation.rotation_degrees = 60
+		await get_tree().create_timer(0.10).timeout
+		$Weapon/AttackAnimation.rotation_degrees = 75
+		await get_tree().create_timer(0.10).timeout
+		$Weapon/AttackAnimation.rotation_degrees = 90
+		await get_tree().create_timer(0.10).timeout
+
+	$Weapon/AttackAnimation.rotation_degrees = 0
+	attacking = false
+
+func _on_AttackArea_body_entered(body)->void:
+	return
+
+#player's attack and health system
+func get_player_health()->int:
+	return player_health
+func set_player_health(Attack_incoming)->void:
+	player_health = max(0, player_health - Attack_incoming)
+	$PlayerHealthBar.update_health(player_health)  # Asegurar que la UI se actualiza
+	if player_health == 0:
+		get_parent().trigger_game_over(false)  # Notificar al world.gd
+
+func get_player_attack() -> int:
+	return player_attack
+"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jurpl"]
 animations = [{
@@ -178,6 +282,28 @@ position = Vector2(168, 168)
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, 168)
+
+[node name="Player2" parent="." instance=ExtResource("1_3m66n")]
+position = Vector2(127, -8)
+script = SubResource("GDScript_m2je8")
+
+[node name="Weapon" type="Sprite2D" parent="Player2"]
+texture_filter = 1
+position = Vector2(9, 2)
+scale = Vector2(0.5, 0.5)
+
+[node name="AttackAnimation" type="AnimatedSprite2D" parent="Player2/Weapon"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jurpl")
+animation = &"attack"
+frame = 1
+frame_progress = 0.793383
+speed_scale = 0.5
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player2/Weapon"]
+position = Vector2(-386, -292)
+scale = Vector2(2, 2)
+disable_mode = 2
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_3m66n")]
 z_index = 1

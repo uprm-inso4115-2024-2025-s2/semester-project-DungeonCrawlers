@@ -24,7 +24,7 @@ func _physics_process(delta):
 	$PlayerIdle.show()
 	$PlayerIdle.play()
 	# Handle movement input and adjust position
-	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
+	if Input.is_key_pressed(KEY_D):
 		velocity.x = speed
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
@@ -35,19 +35,19 @@ func _physics_process(delta):
 		$Weapon.position.x = 9
 		$PlayerRun.play()
 	
-	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
+	if Input.is_key_pressed(KEY_W):
 		velocity.y -= speed 
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
 		$PlayerRun.show()
 		$PlayerRun.play()
-	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
+	if Input.is_key_pressed(KEY_S):
 		velocity.y += speed 
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
 		$PlayerRun.show()
 		$PlayerRun.play()
-	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
+	if Input.is_key_pressed(KEY_A):
 		velocity.x -= speed 
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
