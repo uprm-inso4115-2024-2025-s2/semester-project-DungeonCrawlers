@@ -90,7 +90,10 @@ func start_attack():
 
 #player's attack and health system
 func set_heal(heal) -> void:
-	player_health = max(0, player_health + heal)
+	if (player_health + heal) >= 100:
+		player_health = 100 
+	else:
+		player_health = max(0, player_health + heal)
 	$PlayerHealthBar.update_health(player_health)
 func get_player_health()->int:
 	return player_health
