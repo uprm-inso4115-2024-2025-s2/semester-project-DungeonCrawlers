@@ -222,15 +222,7 @@ visible = false
 player = NodePath("../Player")
 
 [node name="PauseMenuUI" parent="CanvasLayer" instance=ExtResource("21_blxne")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 283.0
-offset_bottom = 163.0
-grow_horizontal = 1
-grow_vertical = 1
+visible = false
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -363,11 +355,6 @@ region_rect = Rect2(16, 64, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="button"]
 shape = SubResource("RectangleShape2D_eybtq")
-
-[node name="PauseCanva" type="CanvasLayer" parent="."]
-
-[node name="PauseMenuUI" parent="PauseCanva" instance=ExtResource("21_blxne")]
-visible = false
 
 [node name="HowToPlay" type="CanvasLayer" parent="."]
 

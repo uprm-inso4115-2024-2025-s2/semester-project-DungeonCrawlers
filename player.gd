@@ -57,7 +57,7 @@ func _physics_process(delta):
 		$Weapon.scale.x = -0.5
 		$Weapon.position.x = -11
 		$PlayerRun.play()
-	move_and_slide()
+	move_and_collide(delta*velocity)
 
 func start_attack():
 
