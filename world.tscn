@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dcb5nu1sl5rfu" path="res://0x72_DungeonTilesetII_v1.7/atlas_floor-16x16.png" id="22_kby77"]
 [ext_resource type="Script" path="res://button.gd" id="23_icr6n"]
 [ext_resource type="PackedScene" uid="uid://cw1h2eu3qfr8q" path="res://how_to_play.tscn" id="25_35hra"]
-[ext_resource type="PackedScene" path="res://room.tscn" id="26_xjyi0"]
+[ext_resource type="PackedScene" uid="uid://dvon7uf2l7bs" path="res://room.tscn" id="26_xjyi0"]
 
 [sub_resource type="GDScript" id="GDScript_m2je8"]
 script/source = "extends CharacterBody2D
@@ -36,8 +36,17 @@ var player_health = 100
 var player_attack = 25
 
 @onready var target = position
-@onready var player1 = get_node(\"/root/World/Player\")  # Adjust the path to your player1 node
-@onready var camera = player1.get_node(\"Camera2D\")  # Adjust if the camera is in a different node
+#@onready var player1 = get_node(\"/root/World/Player\")  # Adjust the path to your player1 node
+#@onready var camera = player1.get_node(\"Camera2D\")  # Adjust if the camera is in a different node
+
+var player1
+var camera
+
+func _ready():
+	add_to_group(\"player\")
+	player1 = get_node(\"/root/World/Player\")
+	camera = player1.get_node(\"Camera2D\")
+
 
 # @onready var attack_sprite = $AttackSprite
 # @onready var attack_area = $AttackSprite/AttackArea

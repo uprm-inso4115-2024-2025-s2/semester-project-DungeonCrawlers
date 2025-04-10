@@ -11,17 +11,30 @@ enum State { IDLE, CHASE, DEAD }
 var summons_list = [] 
 signal boss_died
 var current_state = State.IDLE
-var player: CharacterBody2D = null
+#var player: CharacterBody2D = null
+var players := []
 
+#func _ready():
+	#player = get_tree().get_first_node_in_group("player")
 func _ready():
-	player = get_tree().get_first_node_in_group("player")
+	players = get_tree().get_nodes_in_group("player")
+
+
+#func _process(delta):
+	#match current_state:
+		#State.IDLE:
+			#play_animation("idle")
+			#if player and global_position.distance_to(player.global_position) < player_detection_range:
+				#change_state(State.CHASE)
 
 func _process(delta):
 	match current_state:
 		State.IDLE:
 			play_animation("idle")
-			if player and global_position.distance_to(player.global_position) < player_detection_range:
+			var closest = get_closest_player()
+			if closest and global_position.distance_to(closest.global_position) < player_detection_range:
 				change_state(State.CHASE)
+
 
 		State.CHASE:
 			play_animation("run")
@@ -38,10 +51,30 @@ func change_state(new_state):
 	if current_state != new_state:
 		current_state = new_state
 
+func get_closest_player():
+	var closest = null
+	var min_dist = INF
+	for p in players:
+		if not is_instance_valid(p):
+			continue
+		var dist = global_position.distance_to(p.global_position)
+		if dist < min_dist:
+			min_dist = dist
+			closest = p
+	return closest
+
+
+#func move_towards_player():
+	#if player:
+		#velocity = (player.global_position - global_position).normalized() * speed
+		#move_and_slide()
+
 func move_towards_player():
-	if player:
-		velocity = (player.global_position - global_position).normalized() * speed
+	var closest = get_closest_player()
+	if closest:
+		velocity = (closest.global_position - global_position).normalized() * speed
 		move_and_slide()
+
 
 func play_animation(anim_name):
 	if $AnimationPlayer.current_animation != anim_name:
@@ -63,14 +96,30 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		queue_free()
 		cleanup_summons()
 
+#func throw_sword():
+	#var sword = preload("res://sword_projectile.tscn").instantiate()
+	#sword.global_position = global_position
+	#sword.set_direction(player.global_position)
+	#get_parent().add_child(sword)
+	#await get_tree().create_timer(10.0).timeout
+	
 func throw_sword():
-	var sword = preload("res://sword_projectile.tscn").instantiate()
-	sword.global_position = global_position
-	sword.set_direction(player.global_position)
-	get_parent().add_child(sword)
-	await get_tree().create_timer(10.0).timeout
+	var closest = get_closest_player()
+	if closest:
+		var sword = preload("res://sword_projectile.tscn").instantiate()
+		sword.global_position = global_position
+		sword.set_direction(closest.global_position)
+		get_parent().add_child(sword)
+		await get_tree().create_timer(10.0).timeout
+
+	
+#func should_attack():
+	#return global_position.distance_to(player.global_position) < 100 and randf() < 0.002
+
 func should_attack():
-	return global_position.distance_to(player.global_position) < 100 and randf() < 0.002
+	var closest = get_closest_player()
+	return closest and global_position.distance_to(closest.global_position) < 100 and randf() < 0.002
+
 
 func should_summon():
 	return true

@@ -99,3 +99,6 @@ func set_player_health(Attack_incoming)->void:
 
 func get_player_attack() -> int:
 	return player_attack
+
+func _ready():
+	add_to_group("player")
