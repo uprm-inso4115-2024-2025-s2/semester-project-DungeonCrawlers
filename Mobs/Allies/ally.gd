@@ -49,7 +49,6 @@ func _physics_process(delta):
 
 func _on_heal_timer_timeout():
 	if player and player.global_position.distance_to(global_position) < 35:
-		# Heal the player (assuming player has a "heal" method)
 		player.set_heal(heal_amount)
 		print("Ally healed the player for ", heal_amount, " HP!")
 
