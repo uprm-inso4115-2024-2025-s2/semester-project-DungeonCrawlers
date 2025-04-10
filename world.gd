@@ -6,6 +6,8 @@ var attack_distance_enemy = 30.0
 @onready var Boss = $Boss
 @onready var EnemySpawner = $EnemySpawner
 @onready var Player = $Player
+@onready var Player2 = $Player2
+
 @onready var canvas_layer = $CanvasLayer
 @onready var game_over_screen = preload("res://UI/game_over_screen.tscn")
 @onready var pause_menu = get_node_or_null("PauseMenuUI")
@@ -76,14 +78,30 @@ func _process(delta):
 			min_distance = distance
 			nearest_demon = demon
 
+	#if nearest_demon:
+		#if nearest_demon not in enemy_attack_cooldowns or current_time - enemy_attack_cooldowns[nearest_demon] >= 1.0:
+			## Only the nearest demon attacks
+			#Player.set_player_health(nearest_demon.get_Demon_attack())
+			#$Player/PlayerHealthBar.update_health(Player.get_player_health())
+#
+			## Update the cooldown timer for this demon
+			#enemy_attack_cooldowns[nearest_demon] = current_time
+
 	if nearest_demon:
 		if nearest_demon not in enemy_attack_cooldowns or current_time - enemy_attack_cooldowns[nearest_demon] >= 1.0:
-			# Only the nearest demon attacks
-			Player.set_player_health(nearest_demon.get_Demon_attack())
-			$Player/PlayerHealthBar.update_health(Player.get_player_health())
+		
+			# Apply damage to Player 1 if in range
+			if Player.global_position.distance_to(nearest_demon.global_position) <= attack_distance_enemy:
+				Player.set_player_health(nearest_demon.get_Demon_attack())
+				$Player/PlayerHealthBar.update_health(Player.get_player_health())
 
-			# Update the cooldown timer for this demon
+			# Apply damage to Player 2 if in range
+			if Player2.global_position.distance_to(nearest_demon.global_position) <= attack_distance_enemy:
+				Player2.set_player_health(nearest_demon.get_Demon_attack())
+				$Player2/PlayerHealthBar.update_health(Player2.get_player_health())
+
 			enemy_attack_cooldowns[nearest_demon] = current_time
+
 
 	#if Input.is_action_just_pressed("ui_m"):
 		#canvas_layer.visible = !canvas_layer.visible

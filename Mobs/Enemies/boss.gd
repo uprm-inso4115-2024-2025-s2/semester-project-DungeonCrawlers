@@ -28,9 +28,12 @@ func _ready():
 				#change_state(State.CHASE)
 
 func _process(delta):
+	players = get_tree().get_nodes_in_group("player")
+	#print("Boss sees closest:", get_closest_player().name)
 	match current_state:
 		State.IDLE:
 			play_animation("idle")
+			
 			var closest = get_closest_player()
 			if closest and global_position.distance_to(closest.global_position) < player_detection_range:
 				change_state(State.CHASE)
@@ -140,6 +143,7 @@ func cleanup_summons():
 	for mob in summons_list:
 		mob.queue_free()  # Remove the mob from the scene
 	summons_list.clear()
+	
 func update_health_bar(new_health):
 	var health_percent = (float(max_health - new_health)*.20)
 	foreground_bar.size.x = (foreground_bar.size.x - health_percent)

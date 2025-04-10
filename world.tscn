@@ -149,11 +149,15 @@ func _on_AttackArea_body_entered(body)->void:
 #player's attack and health system
 func get_player_health()->int:
 	return player_health
-func set_player_health(Attack_incoming)->void:
+func set_player_health(Attack_incoming) -> void:
 	player_health = max(0, player_health - Attack_incoming)
+	print(\"Player 2 took damage! Health now:\", player_health)
+
 	$PlayerHealthBar.update_health(player_health)  # Asegurar que la UI se actualiza
 	if player_health == 0:
-		get_parent().trigger_game_over(false)  # Notificar al world.gd
+		get_parent().trigger_game_over(false)
+		
+		
 
 func get_player_attack() -> int:
 	return player_attack
@@ -333,6 +337,9 @@ position = Vector2(-386, -292)
 scale = Vector2(2, 2)
 disable_mode = 2
 
+[node name="PlayerHealthBar" parent="Player2" instance=ExtResource("12_vhryo")]
+position = Vector2(0, 8)
+
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_3m66n")]
 z_index = 1
 texture_filter = 1
@@ -365,7 +372,6 @@ scale = Vector2(2, 2)
 disable_mode = 2
 
 [node name="PlayerHealthBar" parent="Player" instance=ExtResource("12_vhryo")]
-visible = false
 position = Vector2(0, 8)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_ggghl")]
