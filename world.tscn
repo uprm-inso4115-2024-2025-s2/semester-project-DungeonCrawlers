@@ -1,18 +1,14 @@
-[gd_scene load_steps=34 format=4 uid="uid://cjk6ugy6xve2s"]
+[gd_scene load_steps=32 format=4 uid="uid://cjk6ugy6xve2s"]
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
 [ext_resource type="PackedScene" uid="uid://bl8oknjgabrw5" path="res://Mobs/FrindlyChungus/node_2d.tscn" id="2_qrjl8"]
-[ext_resource type="PackedScene" uid="uid://c6oklpo7cs1hl" path="res://Menus/pause_menu_ui.tscn" id="2_r3qjk"]
 [ext_resource type="PackedScene" uid="uid://cm7leo13cucj8" path="res://Mobs/EnemyMobs/node_2d.tscn" id="3_be4mt"]
 [ext_resource type="PackedScene" uid="uid://d23too6ioc6pe" path="res://Mobs/Enemies/boss.tscn" id="3_rljpm"]
 [ext_resource type="TileSet" uid="uid://beyknfgxm43ey" path="res://autotileFloorWall.tres" id="3_yeq46"]
 [ext_resource type="PackedScene" uid="uid://cyqs74exlvuc1" path="res://Mobs/Enemies/enemy_spawner.tscn" id="6_ggghl"]
 [ext_resource type="PackedScene" uid="uid://c6pm4gfi87tca" path="res://Mobs/Allies/ally_spawner.tscn" id="7_qay8k"]
 [ext_resource type="PackedScene" uid="uid://b1j7y1cy7nvv4" path="res://canvas_layer.tscn" id="8_5uf2j"]
-[ext_resource type="Texture2D" uid="uid://dauvb61drlds7" path="res://Sprites/weapon_baton_with_spikes.png" id="8_t1qux"]
-[ext_resource type="Texture2D" uid="uid://d0v30uu8qrp6r" path="res://Sprites/weapon_axe.png" id="9_yhmry"]
-[ext_resource type="Texture2D" uid="uid://6y1c3jlsogwj" path="res://Sprites/weapon_big_hammer.png" id="10_esu3h"]
 [ext_resource type="PackedScene" uid="uid://dm3wilymjhuky" path="res://health_hud.tscn" id="12_vhryo"]
 [ext_resource type="Script" path="res://chest.gd" id="15_8ymvr"]
 [ext_resource type="Texture2D" uid="uid://dmiscqoikrii2" path="res://0x72_DungeonTilesetII_v1.7/chests.png" id="15_ys6no"]
@@ -22,23 +18,8 @@
 [ext_resource type="Script" path="res://server.gd" id="18_ggr2c"]
 [ext_resource type="Texture2D" uid="uid://xld4tpa6fi25" path="res://0x72_DungeonTilesetII_v1.7/atlas_walls_high-16x32.png" id="18_h4wj1"]
 [ext_resource type="PackedScene" uid="uid://c6oklpo7cs1hl" path="res://pause_menu_ui.tscn" id="21_blxne"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jurpl"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_t1qux")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_yhmry")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_esu3h")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://7fpxoywapce6" path="res://weapon_pickup.tscn" id="22_i7xal"]
+[ext_resource type="PackedScene" uid="uid://dataergm4f0uj" path="res://weapon_pickup_h.tscn" id="23_8uxta"]
 
 [sub_resource type="Animation" id="Animation_dq6ok"]
 length = 0.001
@@ -168,7 +149,7 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, 168)
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("1_3m66n")]
+[node name="Player" parent="." instance=ExtResource("1_3m66n")]
 z_index = 1
 texture_filter = 1
 position = Vector2(96, -8)
@@ -180,23 +161,10 @@ limit_smoothed = true
 limit_smoothed = true
 editor_draw_limits = true
 
-[node name="Weapon" type="Sprite2D" parent="Player"]
+[node name="Weapon2" type="Sprite2D" parent="Player"]
 texture_filter = 1
 position = Vector2(9, 2)
 scale = Vector2(0.5, 0.5)
-
-[node name="AttackAnimation" type="AnimatedSprite2D" parent="Player/Weapon"]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_jurpl")
-animation = &"attack"
-frame = 1
-frame_progress = 0.793383
-speed_scale = 0.5
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Weapon"]
-position = Vector2(-386, -292)
-scale = Vector2(2, 2)
-disable_mode = 2
 
 [node name="PlayerHealthBar" parent="Player" instance=ExtResource("12_vhryo")]
 position = Vector2(0, 8)
@@ -210,8 +178,7 @@ position = Vector2(-104, 8)
 visible = false
 player = NodePath("../Player")
 
-[node name="PauseMenuUI" parent="CanvasLayer" instance=ExtResource("2_r3qjk")]
-
+[node name="PauseMenuUI" parent="CanvasLayer" instance=ExtResource("21_blxne")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -323,10 +290,14 @@ debug_color = Color(0.166832, 0.64402, 0, 0.42)
 [node name="PauseMenuUI" parent="PauseCanva" instance=ExtResource("21_blxne")]
 visible = false
 
-
 [node name="GameOver" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_5uf2j")]
 player = NodePath("../Player")
 
+[node name="WeaponPickup" parent="." instance=ExtResource("22_i7xal")]
+position = Vector2(-19, 43)
+
+[node name="weapon_pickup_h" parent="." instance=ExtResource("23_8uxta")]
+position = Vector2(197, -1)
 
 [connection signal="body_entered" from="Traps" to="Player" method="_on_traps_body_entered"]
 [connection signal="body_entered" from="Traps" to="Traps" method="_on_body_entered"]
