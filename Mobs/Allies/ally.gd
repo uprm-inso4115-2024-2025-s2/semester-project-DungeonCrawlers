@@ -39,7 +39,9 @@ func _physics_process(delta):
 				animated_sprite.play("run")
 
 		velocity = move_direction * speed
+
 		move_and_collide(velocity * delta)
+
 
 		# Flip animation
 		if move_direction.x < 0 and not animated_sprite.flip_h:
