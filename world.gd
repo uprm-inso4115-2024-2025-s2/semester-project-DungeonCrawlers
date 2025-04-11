@@ -2,6 +2,7 @@ extends Node2D
 var room_size: Vector2 = Vector2(44,46)  # Tamaño del room (ancho, alto)
 var matrix = []
 var attack_distance_player = 50.0
+var attack_distance_player2 = 50.0
 var attack_distance_enemy = 30.0
 @onready var Boss = $Boss
 @onready var EnemySpawner = $EnemySpawner
@@ -20,6 +21,7 @@ var attack_distance_enemy = 30.0
 
 var enemy_attack_cooldowns = {}
 var player_attack_cooldown = 0.0
+var player2_attack_cooldown = 0.0
 var game_over = false
 
 func _ready():
@@ -53,7 +55,7 @@ func _process(delta):
 		return  # Si el juego ya terminó, evitamos más procesamiento
 
 	var current_time = Time.get_ticks_msec() / 1000.0
-	if Input.is_action_just_pressed("attack") and current_time - player_attack_cooldown >= 0.5:
+	if Input.is_action_just_pressed("player1_attack") and current_time - player_attack_cooldown >= 0.5:
 		if Boss:
 			var Bossdistance = Player.global_position.distance_to(Boss.global_position)
 			if Bossdistance <= attack_distance_player:
@@ -68,6 +70,22 @@ func _process(delta):
 
 		# Set cooldown timestamp
 		player_attack_cooldown = current_time
+		
+	if Input.is_action_just_pressed("player2_attack") and current_time - player2_attack_cooldown >= 0.5:
+		if Boss:
+			var Bossdistance = Player2.global_position.distance_to(Boss.global_position)
+			if Bossdistance <= attack_distance_player2:
+				Boss.take_damage(Player2.get_player_attack())
+		for demon in EnemySpawner.spawned_demons:
+			var distance = Player2.global_position.distance_to(demon.global_position)
+			
+			if distance <= attack_distance_player2:
+				demon.set_Demon_health(Player2.get_player_attack())
+				demon.update_health(demon.get_Demon_health())
+
+
+		# Set cooldown timestamp
+		player2_attack_cooldown = current_time
 
 
 	for demon in EnemySpawner.spawned_demons:
