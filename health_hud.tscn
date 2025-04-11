@@ -6,6 +6,8 @@
 script = ExtResource("1_mkfar")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(4.025, 4.025)
+transform = Transform2D(4.025, 0, 0, 4.025, 0, 0)
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -22,6 +24,7 @@ offset_bottom = 2.0
 color = Color(0, 0, 0, 1)
 
 [node name="Foregroundbar" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_right = 20.0
 offset_bottom = 2.0
 color = Color(0, 1, 0, 1)
