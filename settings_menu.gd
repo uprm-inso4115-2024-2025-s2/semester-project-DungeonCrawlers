@@ -19,6 +19,19 @@ const GRAPHICS_SCENE = "res://UI/GraphicsSettings.tscn"
 var previous_menu = null  # Stores reference to the menu that opened Settings
 
 func _ready():
+	var back_stylebox = StyleBoxTexture.new()
+	back_stylebox.texture = load("res://main_menu_assets/Back.png")  
+	$VBoxContainer/ReturnButton.add_theme_stylebox_override("normal", back_stylebox)
+
+	var back_hover_stylebox = StyleBoxTexture.new()
+	back_hover_stylebox.texture = load("res://main_menu_assets/Back_pressed.png")  
+	$VBoxContainer/ReturnButton.add_theme_stylebox_override("hover", back_hover_stylebox)
+
+	var label_background = StyleBoxTexture.new()
+	label_background.texture = load("res://main_menu_assets/Foreground.png") 
+	$Label.add_theme_stylebox_override("panel", label_background)
+
+	$VBoxContainer/ReturnButton.connect("pressed", Callable(self, "_on_back_pressed"))
 	audio_button.pressed.connect(_on_audio_pressed)
 	controls_button.pressed.connect(_on_controls_pressed)
 	graphics_button.pressed.connect(_on_graphics_pressed)
@@ -47,6 +60,7 @@ func _on_graphics_pressed():
 
 func _on_return_pressed():
 	print("Returning to previous screen")
+
 	animation_player.play("fade_out")
 
 	# Wait for animation to finish before switching UI
@@ -59,6 +73,8 @@ func _on_return_pressed():
 	# Show the main settings menu again
 	$VBoxContainer.visible = true  # Show buttons again
 	
+# get_tree().change_scene_to_file("res://main_menu.tscn") 
+
 
 # Function to load different settings UIs
 func _load_settings_scene(scene_path):

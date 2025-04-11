@@ -18,6 +18,13 @@ func _input(event):
 			door_collision.set_deferred("disabled", true)
 			open = true
 
+func toggle_door(state):
+	if state and not open:
+		animation.play("door_open")
+		await get_tree().create_timer(0.75).timeout
+		door_collision.set_deferred("disabled", true)
+		open = true
+
 
 func _on_body_entered(body):
 	if body.name == "Player":

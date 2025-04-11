@@ -1,5 +1,6 @@
 extends Node2D
-
+var room_size: Vector2 = Vector2(44,46)  # Tamaño del room (ancho, alto)
+var matrix = []
 var attack_distance_player = 50.0
 var attack_distance_enemy = 30.0
 @onready var Boss = $Boss
@@ -8,6 +9,11 @@ var attack_distance_enemy = 30.0
 @onready var canvas_layer = $CanvasLayer
 @onready var game_over_screen = preload("res://UI/game_over_screen.tscn")
 @onready var pause_menu = get_node_or_null("PauseMenuUI")
+@onready var HowToPlayScene = $"HowToPlay/How To Play"
+@onready var Room = $"room/room"
+@onready var Room2 = $"room/room2"
+@onready var Room3 = $"room/room3"
+@onready var Room4 = $"room/room4"
 
 
 var enemy_attack_cooldowns = {}
@@ -15,6 +21,26 @@ var player_attack_cooldown = 0.0
 var game_over = false
 
 func _ready():
+	var array_1 = []
+	for a in range(room_size.x):
+		array_1.append(0)
+		
+	for a in range(room_size.y):
+		matrix.append(array_1)
+	
+	#y,x
+	matrix[0][0] = Room
+	Room.setxy(0,0)
+	
+	matrix[1][0] = Room2
+	Room2.setxy(1,0)
+	
+	matrix[0][1] = Room3
+	Room3.setxy(0,1)
+	
+	matrix[1][1] = Room4
+	Room.setxy(1,1)
+	
 	Boss.connect("boss_died", Callable(self, "_on_boss_died"))
 func _on_boss_died():
 	Boss = null  # Set Boss to null to prevent further interactions
@@ -97,11 +123,7 @@ func trigger_game_over(victory: bool):
 		print("Game Over. Has sido derrotado.")
 
 
-#NOTE: Esto que anadi reconoce el esc key para activar el pause menu
+
+
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):  # Detect ESC key press
-		if pause_menu:
-			pause_menu.toggle_pause()
-		#Debugging
-		#else:
-			#print("ERROR: Pause Menu not found in the scene!")
+	return

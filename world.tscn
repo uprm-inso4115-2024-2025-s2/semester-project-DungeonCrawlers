@@ -1,4 +1,5 @@
-[gd_scene load_steps=35 format=4 uid="uid://cjk6ugy6xve2s"]
+
+[gd_scene load_steps=41 format=4 uid="uid://cjk6ugy6xve2s"]
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -20,8 +21,15 @@
 [ext_resource type="Script" path="res://door.gd" id="18_70ij5"]
 [ext_resource type="Script" path="res://server.gd" id="18_ggr2c"]
 [ext_resource type="Texture2D" uid="uid://xld4tpa6fi25" path="res://0x72_DungeonTilesetII_v1.7/atlas_walls_high-16x32.png" id="18_h4wj1"]
+
 [ext_resource type="PackedScene" uid="uid://c6oklpo7cs1hl" path="res://pause_menu_ui.tscn" id="21_blxne"]
 [ext_resource type="PackedScene" uid="uid://o5dyjipitmjr" path="res://settings_menu.tscn" id="21_tglox"]
+
+[ext_resource type="Script" path="res://Switch.gd" id="21_3af4n"]
+[ext_resource type="Texture2D" uid="uid://dcb5nu1sl5rfu" path="res://0x72_DungeonTilesetII_v1.7/atlas_floor-16x16.png" id="22_kby77"]
+[ext_resource type="Script" path="res://button.gd" id="23_icr6n"]
+[ext_resource type="PackedScene" uid="uid://cw1h2eu3qfr8q" path="res://how_to_play.tscn" id="25_35hra"]
+[ext_resource type="PackedScene" uid="uid://dvon7uf2l7bs" path="res://room.tscn" id="26_xjyi0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jurpl"]
 animations = [{
@@ -139,6 +147,12 @@ _data = {
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw1ag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq5l2"]
+size = Vector2(18, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eybtq"]
+size = Vector2(16, 16)
 
 [node name="World" type="Node2D" groups=["Player"]]
 script = ExtResource("1_ghkhd")
@@ -285,6 +299,7 @@ shape = SubResource("RectangleShape2D_xnfl7")
 one_way_collision_margin = 0.0
 
 [node name="door" type="Area2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(80.605, -124.45)
 scale = Vector2(2, 2)
 disable_mode = 1
@@ -325,6 +340,41 @@ debug_color = Color(0.166832, 0.64402, 0, 0.42)
 [node name="PauseMenuUI" parent="MenusCanvas" instance=ExtResource("21_blxne")]
 visible = false
 
+[node name="Switch" type="Area2D" parent="."]
+position = Vector2(72, -55)
+script = ExtResource("21_3af4n")
+
+[node name="switch_off_sprite" type="Sprite2D" parent="Switch"]
+texture = ExtResource("22_kby77")
+region_enabled = true
+region_rect = Rect2(48, 80, 16, 16)
+
+[node name="switch_on_sprite" type="Sprite2D" parent="Switch"]
+texture = ExtResource("22_kby77")
+region_enabled = true
+region_rect = Rect2(32, 80, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Switch"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_tq5l2")
+
+[node name="button" type="Area2D" parent="."]
+position = Vector2(201, -9)
+script = ExtResource("23_icr6n")
+
+[node name="button_off_sprite" type="Sprite2D" parent="button"]
+texture = ExtResource("22_kby77")
+region_enabled = true
+region_rect = Rect2(0, 64, 16, 16)
+
+[node name="button_on_sprite" type="Sprite2D" parent="button"]
+texture = ExtResource("22_kby77")
+region_enabled = true
+region_rect = Rect2(16, 64, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="button"]
+shape = SubResource("RectangleShape2D_eybtq")
+
 [node name="SettingsMenu" parent="MenusCanvas" instance=ExtResource("21_tglox")]
 visible = false
 offset_left = 1.0
@@ -332,8 +382,22 @@ offset_top = 3.0
 offset_right = 1.0
 offset_bottom = 3.0
 
+[node name="HowToPlay" type="CanvasLayer" parent="."]
+
+[node name="HowToPlay" parent="HowToPlay" instance=ExtResource("25_35hra")]
+
 [node name="GameOver" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_5uf2j")]
 player = NodePath("../Player")
+
+[node name="room" parent="." instance=ExtResource("26_xjyi0")]
+
+[node name="room" parent="room" instance=ExtResource("26_xjyi0")]
+
+[node name="room2" parent="room" instance=ExtResource("26_xjyi0")]
+
+[node name="room3" parent="room" instance=ExtResource("26_xjyi0")]
+
+[node name="room4" parent="room" instance=ExtResource("26_xjyi0")]
 
 [connection signal="body_entered" from="Traps" to="Player" method="_on_traps_body_entered"]
 [connection signal="body_entered" from="Traps" to="Traps" method="_on_body_entered"]
@@ -342,3 +406,9 @@ player = NodePath("../Player")
 [connection signal="body_exited" from="chest" to="chest" method="_on_body_exited"]
 [connection signal="body_entered" from="door" to="door" method="_on_body_entered"]
 [connection signal="body_exited" from="door" to="door" method="_on_body_exited"]
+[connection signal="area_entered" from="Switch" to="Switch" method="_on_area_entered"]
+[connection signal="area_exited" from="Switch" to="Switch" method="_on_area_exited"]
+[connection signal="body_entered" from="Switch" to="Switch" method="_on_body_entered"]
+[connection signal="body_exited" from="Switch" to="Switch" method="_on_body_exited"]
+[connection signal="body_entered" from="button" to="button" method="_on_body_entered"]
+[connection signal="body_exited" from="button" to="button" method="_on_body_exited"]
