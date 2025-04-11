@@ -36,8 +36,7 @@ var player_health = 100
 var player_attack = 25
 
 @onready var target = position
-#@onready var player1 = get_node(\"/root/World/Player\")  # Adjust the path to your player1 node
-#@onready var camera = player1.get_node(\"Camera2D\")  # Adjust if the camera is in a different node
+
 
 var player1
 var camera
@@ -319,6 +318,9 @@ position = Vector2(0, 168)
 position = Vector2(127, -8)
 script = SubResource("GDScript_m2je8")
 
+[node name="PlayerHealthBar" parent="Player2" instance=ExtResource("12_vhryo")]
+position = Vector2(-139, -81)
+
 [node name="Weapon" type="Sprite2D" parent="Player2"]
 texture_filter = 1
 position = Vector2(9, 2)
@@ -336,9 +338,6 @@ speed_scale = 0.5
 position = Vector2(-386, -292)
 scale = Vector2(2, 2)
 disable_mode = 2
-
-[node name="PlayerHealthBar" parent="Player2" instance=ExtResource("12_vhryo")]
-position = Vector2(0, 8)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_3m66n")]
 z_index = 1
@@ -372,7 +371,7 @@ scale = Vector2(2, 2)
 disable_mode = 2
 
 [node name="PlayerHealthBar" parent="Player" instance=ExtResource("12_vhryo")]
-position = Vector2(0, 8)
+position = Vector2(-139, -81)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_ggghl")]
 position = Vector2(-104, 8)

@@ -6,8 +6,6 @@ var player_health = 100
 var player_attack = 25
 
 @onready var target = position
-# @onready var attack_sprite = $AttackSprite
-# @onready var attack_area = $AttackSprite/AttackArea
 
 var attacking = false
 var is_moving = false

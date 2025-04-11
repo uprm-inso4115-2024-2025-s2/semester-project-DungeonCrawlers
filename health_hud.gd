@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var foreground_bar = $CanvasLayer/Control/Foregroundbar
+@onready var foreground_bar = $Control/Foregroundbar
 
 var max_health = 100
 
