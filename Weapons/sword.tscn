@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://q15nfla24yew"]
+
+[ext_resource type="Script" path="res://sword.gd" id="1_cscg4"]
+[ext_resource type="Texture2D" uid="uid://d0v30uu8qrp6r" path="res://Sprites/weapon_axe.png" id="2_8am2e"]
+[ext_resource type="SpriteFrames" uid="uid://u6x2jsnxm0p" path="res://Weapons/sword_attack_frames.tres" id="3_l4em6"]
+[ext_resource type="Script" path="res://Weapons/weapon_baton_with_spikes.gd" id="4_ar5bi"]
+
+[node name="Sword" type="Node2D"]
+script = ExtResource("1_cscg4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8am2e")
+
+[node name="AttackAnimation" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = ExtResource("3_l4em6")
+animation = &"attack"
+frame_progress = 0.50454
+script = ExtResource("4_ar5bi")

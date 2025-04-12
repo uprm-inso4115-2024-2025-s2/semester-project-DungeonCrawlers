@@ -1,0 +1,28 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://u6x2jsnxm0p"]
+
+[ext_resource type="Texture2D" uid="uid://dauvb61drlds7" path="res://Sprites/weapon_baton_with_spikes.png" id="1_jo6xc"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jo6xc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_jo6xc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_jo6xc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_jo6xc")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
