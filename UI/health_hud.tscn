@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://wp2mtwifiagp"]
+
+[ext_resource type="Script" path="res://health_hud.gd" id="1_qgf6r"]
+
+[node name="HealthHud" type="Node2D"]
+script = ExtResource("1_qgf6r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(4.025, 4.025)
+transform = Transform2D(4.025, 0, 0, 4.025, 0, 0)
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 68.0
+offset_right = 168.0
+offset_bottom = 108.0
+
+[node name="BackgroundBar" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 2.0
+color = Color(0, 0, 0, 1)
+
+[node name="Foregroundbar" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 2.0
+color = Color(0, 1, 0, 1)

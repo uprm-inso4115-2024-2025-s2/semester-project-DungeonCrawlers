@@ -6,15 +6,13 @@ var player_health = 100
 var player_attack = 25
 
 @onready var target = position
-# @onready var attack_sprite = $AttackSprite
-# @onready var attack_area = $AttackSprite/AttackArea
 
 var attacking = false
 var is_moving = false
 var last_direction = Vector2.RIGHT
 
 func _input(event):
-	if event.is_action_pressed("attack") and not attacking:
+	if event.is_action_pressed("player1_attack") and not attacking:
 		start_attack()
 		
 func _physics_process(delta):
@@ -24,7 +22,7 @@ func _physics_process(delta):
 	$PlayerIdle.show()
 	$PlayerIdle.play()
 	# Handle movement input and adjust position
-	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
+	if Input.is_key_pressed(KEY_D):
 		velocity.x = speed
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
@@ -35,19 +33,19 @@ func _physics_process(delta):
 		$Weapon.position.x = 9
 		$PlayerRun.play()
 	
-	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
+	if Input.is_key_pressed(KEY_W):
 		velocity.y -= speed 
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
 		$PlayerRun.show()
 		$PlayerRun.play()
-	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
+	if Input.is_key_pressed(KEY_S):
 		velocity.y += speed 
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
 		$PlayerRun.show()
 		$PlayerRun.play()
-	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
+	if Input.is_key_pressed(KEY_A):
 		velocity.x -= speed 
 		$PlayerIdle.stop()
 		$PlayerIdle.hide()
@@ -105,3 +103,6 @@ func set_player_health(Attack_incoming)->void:
 
 func get_player_attack() -> int:
 	return player_attack
+
+func _ready():
+	add_to_group("player")
