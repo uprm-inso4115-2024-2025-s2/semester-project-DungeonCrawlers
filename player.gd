@@ -129,9 +129,11 @@ func get_player_health()->int:
 
 func set_player_health(Attack_incoming) -> void:
 	player_health = max(0, player_health - Attack_incoming)
-	$PlayerHealthBar.update_health(player_health)
+
+	$PlayerHealthBar.update_health(player_health)  # Asegurar que la UI se actualiza
 	if player_health == 0:
-		get_parent().trigger_game_over(false)
+		get_parent().trigger_game_over(false)  # Notificar al world.gd
+
 
 func get_player_attack() -> int:
 	return player_attack

@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=39 format=4 uid="uid://cjk6ugy6xve2s"]
+
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -25,6 +27,7 @@
 [ext_resource type="Script" path="res://button.gd" id="23_icr6n"]
 [ext_resource type="PackedScene" uid="uid://cw1h2eu3qfr8q" path="res://how_to_play.tscn" id="25_35hra"]
 [ext_resource type="PackedScene" uid="uid://dvon7uf2l7bs" path="res://room.tscn" id="26_xjyi0"]
+
 
 [sub_resource type="Animation" id="Animation_dq6ok"]
 length = 0.001
@@ -350,11 +353,13 @@ player = NodePath("../Player")
 
 [node name="room4" parent="room" instance=ExtResource("26_xjyi0")]
 
+
 [node name="WeaponPickup" parent="." instance=ExtResource("22_i7xal")]
 position = Vector2(-19, 43)
 
 [node name="weapon_pickup_h" parent="." instance=ExtResource("23_8uxta")]
 position = Vector2(197, -1)
+
 
 [connection signal="body_entered" from="Traps" to="Player" method="_on_traps_body_entered"]
 [connection signal="body_entered" from="Traps" to="Traps" method="_on_body_entered"]
