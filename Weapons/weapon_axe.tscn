@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://diri8bmaahjhn"]
+
+[ext_resource type="Script" path="res://Weapons/weapon_axe.gd" id="1_6pi5k"]
+[ext_resource type="Script" path="res://Weapons/weapon.gd" id="1_hndyd"]
+[ext_resource type="Texture2D" uid="uid://d0v30uu8qrp6r" path="res://Sprites/weapon_axe.png" id="1_ojvs1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7f8k"]
+animations = [{
+"frames": [{
+"duration": 15.0,
+"texture": ExtResource("1_ojvs1")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="weapon_axe" type="Node2D"]
+script = ExtResource("1_hndyd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ojvs1")
+
+[node name="AttackAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a7f8k")
+animation = &"attack"
+script = ExtResource("1_6pi5k")
