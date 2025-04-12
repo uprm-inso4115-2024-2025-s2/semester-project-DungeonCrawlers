@@ -1,0 +1,106 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw1h2eu3qfr8q"]
+
+[ext_resource type="Script" path="res://how_to_play.gd" id="1_4o0eb"]
+[ext_resource type="FontFile" uid="uid://bx5kie2s42im6" path="res://how_to_play_Asset/MinecraftRegular-Bmg3.otf" id="1_g417l"]
+[ext_resource type="Texture2D" uid="uid://d1iui6rmwal7" path="res://how_to_play_Asset/Keyboard Pixel art.png" id="2_6y5pn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nte3m"]
+bg_color = Color(0.698861, 0.574641, 0.453509, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_odckw"]
+font = ExtResource("1_g417l")
+font_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4o0eb")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 160.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nte3m")
+
+[node name="How To Play" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 5.0
+offset_right = 196.0
+offset_bottom = 28.0
+text = "How To Play"
+label_settings = SubResource("LabelSettings_odckw")
+
+[node name="interact" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 78.0
+offset_right = 170.0
+offset_bottom = 101.0
+text = "Use \"E\" to interact."
+label_settings = SubResource("LabelSettings_odckw")
+
+[node name="move" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 39.0
+offset_right = 173.0
+offset_bottom = 62.0
+text = "Use \"WASD\" to move."
+label_settings = SubResource("LabelSettings_odckw")
+
+[node name="attack" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 118.0
+offset_right = 191.0
+offset_bottom = 141.0
+text = "Use \"Enter\" to attack."
+label_settings = SubResource("LabelSettings_odckw")
+
+[node name="W" type="Sprite2D" parent="Panel"]
+position = Vector2(228.8, 28.4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_6y5pn")
+region_enabled = true
+region_rect = Rect2(20, 16, 44, 52)
+
+[node name="D" type="Sprite2D" parent="Panel"]
+position = Vector2(247.8, 51.4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_6y5pn")
+region_enabled = true
+region_rect = Rect2(124, 16, 44, 52)
+
+[node name="A" type="Sprite2D" parent="Panel"]
+position = Vector2(228.8, 51.4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_6y5pn")
+region_enabled = true
+region_rect = Rect2(72, 16, 44, 52)
+
+[node name="S" type="Sprite2D" parent="Panel"]
+position = Vector2(209.8, 51.4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_6y5pn")
+region_enabled = true
+region_rect = Rect2(176, 16, 44, 52)
+
+[node name="E" type="Sprite2D" parent="Panel"]
+position = Vector2(228, 87)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6y5pn")
+region_enabled = true
+region_rect = Rect2(125, 136, 44, 52)
+
+[node name="Enter" type="Sprite2D" parent="Panel"]
+position = Vector2(230, 127)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_6y5pn")
+region_enabled = true
+region_rect = Rect2(20, 136, 100, 52)

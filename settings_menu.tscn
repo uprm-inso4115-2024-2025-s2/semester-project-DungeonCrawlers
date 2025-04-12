@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://o5dyjipitmjr"]
+[gd_scene load_steps=6 format=3 uid="uid://o5dyjipitmjr"]
 
 [ext_resource type="Script" path="res://settings_menu.gd" id="1_aeoq7"]
+[ext_resource type="Texture2D" uid="uid://dg17228ash2qc" path="res://main_menu_assets/Background.png" id="2_o4rx6"]
 
 [sub_resource type="Animation" id="Animation_7glaf"]
 resource_name = "Fade in"
@@ -34,6 +35,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aeoq7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 937.0
+offset_bottom = 655.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_o4rx6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

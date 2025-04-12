@@ -74,8 +74,7 @@ func _physics_process(delta):
 		$Weapon.scale.x = -0.5
 		$Weapon.position.x = -11
 		$PlayerRun.play()
-
-	move_and_slide()
+	move_and_collide(delta * velocity)
 
 func start_attack():
 	if current_weapon:
@@ -114,12 +113,18 @@ func start_attack():
 				sprite_node.visible = true
 
 			attacking = false
-		else:
-			print(" El nodo AttackAnimation no existe o no es AnimatedSprite2D.")
-	else:
-		print(" No hay arma equipada.")
 
-func get_player_health() -> int:
+#func _on_AttackArea_body_entered(body)->void:
+	#return
+
+#player's attack and health system
+func set_health(heal)-> void:
+	if (player_health + heal) >= 100:
+		player_health = 100 
+	else:
+		player_health = max(0, player_health + heal)
+	$PlayerHealthBar.update_health(player_health)
+func get_player_health()->int:
 	return player_health
 
 func set_player_health(Attack_incoming) -> void:

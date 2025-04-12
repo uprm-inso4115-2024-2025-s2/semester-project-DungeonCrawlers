@@ -63,4 +63,4 @@ func _on_leaderboard_pressed():
 	pass # Implement leaderboard functionality later
 
 func _on_options_pressed():
-	pass # Implement options functionality later
+	get_tree().change_scene_to_file("res://settings_menu.tscn") 

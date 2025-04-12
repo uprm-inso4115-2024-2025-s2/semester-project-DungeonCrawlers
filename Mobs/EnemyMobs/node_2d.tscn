@@ -25,7 +25,7 @@ animations = [{
 "texture": ExtResource("4_sjw5a")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -42,7 +42,7 @@ animations = [{
 "texture": ExtResource("8_gm4jg")
 }],
 "loop": true,
-"name": &"Run",
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -54,7 +54,7 @@ height = 24.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0p8uc")
-animation = &"Run"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
