@@ -6,7 +6,9 @@
 position = Vector2(-1000, 0)
 script = ExtResource("1_mkfar")
 
+
 [node name="Control" type="Control" parent="."]
+
 layout_mode = 3
 anchors_preset = 0
 offset_left = 128.0
@@ -20,8 +22,10 @@ offset_right = 20.0
 offset_bottom = 2.0
 color = Color(0, 0, 0, 1)
 
+
 [node name="Foregroundbar" type="ColorRect" parent="Control"]
 custom_minimum_size = Vector2(-100, 0)
+
 layout_mode = 0
 offset_right = 20.0
 offset_bottom = 2.0
