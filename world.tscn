@@ -364,11 +364,6 @@ region_rect = Rect2(16, 64, 16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="button"]
 shape = SubResource("RectangleShape2D_eybtq")
 
-[node name="PauseCanva" type="CanvasLayer" parent="."]
-
-[node name="PauseMenuUI" parent="PauseCanva" instance=ExtResource("21_blxne")]
-visible = false
-
 [node name="HowToPlay" type="CanvasLayer" parent="."]
 
 [node name="HowToPlay" parent="HowToPlay" instance=ExtResource("25_35hra")]

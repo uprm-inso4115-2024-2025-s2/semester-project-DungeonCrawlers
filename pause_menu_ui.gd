@@ -1,11 +1,16 @@
 extends Control
 
+var GameOver = false
+func SetGameOver(x)->void:
+	GameOver = x
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()  # Hide the pause menu when the game starts
 
 # Detect when ESC is pressed
 func _input(event: InputEvent) -> void:
+	if GameOver:
+		return
 	if event.is_action_pressed("ui_cancel"):
 		toggle_pause()
 	elif event.is_action_pressed("how_to_play") and visible: 
