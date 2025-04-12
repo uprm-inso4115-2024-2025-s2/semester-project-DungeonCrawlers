@@ -39,7 +39,7 @@ func _physics_process(delta):
 				animated_sprite.play("run")
 
 		velocity = move_direction * speed
-		move_and_slide()
+		move_and_collide(velocity * delta)
 
 		# Flip animation
 		if move_direction.x < 0 and not animated_sprite.flip_h:
@@ -49,7 +49,8 @@ func _physics_process(delta):
 
 func _on_heal_timer_timeout():
 	if player and player.global_position.distance_to(global_position) < 35:
-		player.set_heal(heal_amount)
+		# Heal the player (assuming player has a "heal" method)
+		player.set_health(heal_amount)
 		print("Ally healed the player for ", heal_amount, " HP!")
 
 	# Reset timer with a new random interval

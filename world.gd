@@ -101,6 +101,8 @@ func _process(delta):
 			trigger_game_over(true)
 
 func trigger_game_over(victory: bool):
+	$HowToPlay/HowToPlay.SetGameOver(true)
+	$CanvasLayer/PauseMenuUI.SetGameOver(true)
 	game_over = true
 	get_tree().paused = true  # Pausar el juego
 	print("Before adding game_over_screen:", canvas_layer.get_children())

@@ -57,7 +57,7 @@ func _physics_process(delta):
 		$Weapon.scale.x = -0.5
 		$Weapon.position.x = -11
 		$PlayerRun.play()
-	move_and_slide()
+	move_and_collide(delta * velocity)
 
 func start_attack():
 
@@ -89,7 +89,7 @@ func start_attack():
 	#return
 
 #player's attack and health system
-func set_heal(heal) -> void:
+func set_health(heal)-> void:
 	if (player_health + heal) >= 100:
 		player_health = 100 
 	else:
