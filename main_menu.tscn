@@ -17,6 +17,8 @@ metadata/_edit_vertical_guides_ = [280.0, 140.0]
 [node name="Main Menu" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
+offset_left = 95.0
+offset_right = 95.0
 script = ExtResource("1_6imqt")
 
 [node name="TextureRect" type="TextureRect" parent="Main Menu"]
