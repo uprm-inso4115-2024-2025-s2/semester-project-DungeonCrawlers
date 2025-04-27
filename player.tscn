@@ -67,6 +67,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_2611n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -86,3 +87,7 @@ sprite_frames = SubResource("SpriteFrames_nrfah")
 visible = false
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_3f5p0")
+
+[node name="StrengthBuffTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
