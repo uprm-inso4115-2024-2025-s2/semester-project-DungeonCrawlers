@@ -69,8 +69,9 @@ func _physics_process(delta):
 		
 
 func spawn_strength_potion() -> void:
-	print("💥 Spawning potion now")
-	# If you want it 100 % current every time, use load():
+	# 33 % drop-chance  (randf() returns 0‥1)
+	if randf() >= 0.333:
+		return    # nothing drops this time
 	var potion_packed: PackedScene = load("res://Potions/strength_potion.tscn")
 	var potion := potion_packed.instantiate()
 	assert(potion.get_script() != null, "Potion spawned without script!")
