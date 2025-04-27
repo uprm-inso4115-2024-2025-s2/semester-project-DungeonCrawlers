@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var attack_offset = 0
 var player_health = 100
 var player_attack = 25
+var is_strength_buffed := false
+@onready var StrengthBuffTimer: Timer = $StrengthBuffTimer
+var _base_attack: int
 
 @onready var target = position
 # @onready var attack_sprite = $AttackSprite
@@ -12,6 +15,30 @@ var player_attack = 25
 var attacking = false
 var is_moving = false
 var last_direction = Vector2.RIGHT
+
+func _ready() -> void:
+	# so the potion can detect you
+	add_to_group("player")
+	_base_attack = player_attack
+	StrengthBuffTimer.connect("timeout", Callable(self, "_on_buff_timeout"))
+
+
+# Call this when you pick up a potion:
+func apply_strength_buff(duration: float) -> void:
+	# if already buffed, stop & restore before re-applying
+	if StrengthBuffTimer.is_stopped() == false:
+		StrengthBuffTimer.stop()
+		player_attack = _base_attack
+	player_attack = _base_attack * 2
+	is_strength_buffed = true 
+	StrengthBuffTimer.start(duration)
+	_update_weapon_skin() 
+
+func _on_buff_timeout() -> void:
+	# buff ends—restore original damage
+	is_strength_buffed = false 
+	player_attack = _base_attack
+	_update_weapon_skin() 	
 
 func _input(event):
 	if event.is_action_pressed("attack") and not attacking:
@@ -60,6 +87,9 @@ func _physics_process(delta):
 	move_and_collide(delta * velocity)
 
 func start_attack():
+	if attacking:
+		return
+	$Weapon/AttackAnimation.play()
 
 	attacking = true
 	$Weapon/AttackAnimation.visible = true
@@ -105,3 +135,9 @@ func set_player_health(Attack_incoming)->void:
 
 func get_player_attack() -> int:
 	return player_attack
+
+func _update_weapon_skin() -> void:
+	if is_strength_buffed:
+		$Weapon/AttackAnimation.animation = "Buffed Attack"
+	else:
+		$Weapon/AttackAnimation.animation = "Normal Attack"

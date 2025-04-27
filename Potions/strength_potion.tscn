@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://64w7a8bee8eh"]
+
+[ext_resource type="Script" path="res://Potions/strength_potion.gd" id="1_agjbf"]
+[ext_resource type="Texture2D" uid="uid://cnq0o8gvw2xg2" path="res://Potions/Strenght Pill.png" id="1_hkrg2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktccw"]
+size = Vector2(14, 14)
+
+[node name="Strength_Potion" type="Area2D" script="res://Potions/strength_potion.gd"]
+collision_layer = 2
+script = ExtResource("1_agjbf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ktccw")
+
+[node name="StrenghtPill" type="Sprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_hkrg2")
+

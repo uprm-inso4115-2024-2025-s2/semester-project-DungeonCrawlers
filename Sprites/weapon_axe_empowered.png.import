@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnq0o8gvw2xg2"
-path="res://.godot/imported/Strenght Pill.png-5e0299f18ab2770c13c310200b000df6.ctex"
+uid="uid://dqw4xh7jf762k"
+path="res://.godot/imported/weapon_axe_empowered.png-da2aaa900a9ee7a3f5544415955d5191.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Potions/Strenght Pill.png"
-dest_files=["res://.godot/imported/Strenght Pill.png-5e0299f18ab2770c13c310200b000df6.ctex"]
+source_file="res://Sprites/weapon_axe_empowered.png"
+dest_files=["res://.godot/imported/weapon_axe_empowered.png-da2aaa900a9ee7a3f5544415955d5191.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

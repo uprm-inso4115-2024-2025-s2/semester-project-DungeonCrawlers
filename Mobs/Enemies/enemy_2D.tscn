@@ -57,10 +57,8 @@ script = ExtResource("1_hk8o2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0p8uc")
-animation = &"Idle"
+animation = &"Run"
 autoplay = "Idle"
-frame = 2
-frame_progress = 0.994478
 
 [node name="BackgroundBar" type="ColorRect" parent="AnimatedSprite2D"]
 offset_left = -10.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cjk6ugy6xve2s"]
+[gd_scene load_steps=43 format=4 uid="uid://cjk6ugy6xve2s"]
 
 [ext_resource type="PackedScene" uid="uid://25a3rpnuavgd" path="res://player.tscn" id="1_3m66n"]
 [ext_resource type="Script" path="res://world.gd" id="1_ghkhd"]
@@ -8,9 +8,12 @@
 [ext_resource type="TileSet" uid="uid://beyknfgxm43ey" path="res://autotileFloorWall.tres" id="3_yeq46"]
 [ext_resource type="PackedScene" uid="uid://cyqs74exlvuc1" path="res://Mobs/Enemies/enemy_spawner.tscn" id="6_ggghl"]
 [ext_resource type="PackedScene" uid="uid://c6pm4gfi87tca" path="res://Mobs/Allies/ally_spawner.tscn" id="7_qay8k"]
+[ext_resource type="Script" path="res://Potions/weapon_effect.gd" id="7_rn5pi"]
 [ext_resource type="PackedScene" uid="uid://b1j7y1cy7nvv4" path="res://canvas_layer.tscn" id="8_5uf2j"]
+[ext_resource type="Texture2D" uid="uid://dauvb61drlds7" path="res://Sprites/weapon_baton_with_spikes.png" id="8_t1qux"]
 [ext_resource type="Texture2D" uid="uid://dqw4xh7jf762k" path="res://Sprites/weapon_axe_empowered.png" id="9_8602n"]
 [ext_resource type="Texture2D" uid="uid://d0v30uu8qrp6r" path="res://Sprites/weapon_axe.png" id="9_yhmry"]
+[ext_resource type="Texture2D" uid="uid://6y1c3jlsogwj" path="res://Sprites/weapon_big_hammer.png" id="10_esu3h"]
 [ext_resource type="PackedScene" uid="uid://dm3wilymjhuky" path="res://health_hud.tscn" id="12_vhryo"]
 [ext_resource type="Script" path="res://chest.gd" id="15_8ymvr"]
 [ext_resource type="Texture2D" uid="uid://dmiscqoikrii2" path="res://0x72_DungeonTilesetII_v1.7/chests.png" id="15_ys6no"]
@@ -30,18 +33,16 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_8602n")
-}],
-"loop": true,
-"name": &"Buffed Attack",
-"speed": 5.0
+"texture": ExtResource("8_t1qux")
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_yhmry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_esu3h")
 }],
 "loop": true,
-"name": &"Normal Attack",
+"name": &"attack",
 "speed": 5.0
 }]
 
@@ -184,8 +185,6 @@ position = Vector2(0, 168)
 z_index = 1
 texture_filter = 1
 position = Vector2(96, -8)
-speed = 50
-attack_offset = 0
 
 [node name="MobSpawning" type="Camera2D" parent="Player"]
 limit_smoothed = true
@@ -198,11 +197,16 @@ editor_draw_limits = true
 texture_filter = 1
 position = Vector2(9, 2)
 scale = Vector2(0.5, 0.5)
+script = ExtResource("7_rn5pi")
+normal_texture = ExtResource("9_yhmry")
+buff_texture = ExtResource("9_8602n")
 
 [node name="AttackAnimation" type="AnimatedSprite2D" parent="Player/Weapon"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jurpl")
-animation = &"Normal Attack"
+animation = &"attack"
+frame = 1
+frame_progress = 0.793383
 speed_scale = 0.5
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Weapon"]
