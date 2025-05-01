@@ -3,6 +3,7 @@ var room_size: Vector2 = Vector2(44,46)  # Tamaño del room (ancho, alto)
 var matrix = []
 var attack_distance_player = 50.0
 var attack_distance_enemy = 30.0
+var room_scenes = []
 @onready var Boss = $Boss
 @onready var EnemySpawner = $EnemySpawner
 @onready var Player = $Player
@@ -14,34 +15,56 @@ var attack_distance_enemy = 30.0
 @onready var Room2 = $"room/room2"
 @onready var Room3 = $"room/room3"
 @onready var Room4 = $"room/room4"
+# Preload the room scenes correctly as PackedScenes
+@onready var Room_1 = preload("res://Rooms/Room 1.tscn")
+@onready var Room_2 = preload("res://Rooms/Room 2.tscn")
+@onready var Room_3 = preload("res://Rooms/Room 3.tscn")
+@onready var Room_4 = preload("res://Rooms/Room 4.tscn")
 
 
 var enemy_attack_cooldowns = {}
 var player_attack_cooldown = 0.0
-var game_over = false
+var game_over = false	
 
 func _ready():
-	var array_1 = []
-	for a in range(room_size.x):
-		array_1.append(0)
-		
-	for a in range(room_size.y):
-		matrix.append(array_1)
-	
-	#y,x
-	matrix[0][0] = Room
-	Room.setxy(0,0)
-	
-	matrix[1][0] = Room2
-	Room2.setxy(1,0)
-	
-	matrix[0][1] = Room3
-	Room3.setxy(0,1)
-	
-	matrix[1][1] = Room4
-	Room.setxy(1,1)
+	room_scenes = [Room_1]
+	generate_dungeon()
+	#var array_1 = []
+	#for a in range(room_size.x):
+		#array_1.append(0)
+		#
+	#for a in range(room_size.y):
+		#matrix.append(array_1)
+	#
+	# y,x
+	#matrix[0][0] = Room
+	#Room.setxy(0,0)
+	#
+	#matrix[1][0] = Room2
+	#Room2.setxy(1,0)
+	#
+	#matrix[0][1] = Room3
+	#Room3.setxy(0,1)
+	#
+	#matrix[1][1] = Room4
+	#Room.setxy(1,1)
 	
 	Boss.connect("boss_died", Callable(self, "_on_boss_died"))
+
+func generate_dungeon():
+	var start_pos = Vector2(-130, -290)
+	var room_instance: Node2D
+	room_instance = room_scenes[0].instantiate()
+	room_instance.visible = true  # Make sure it's visible
+	#for y in range(5):  # Example grid (2x2)
+		#for x in range(5):
+			#var room_scene = room_scenes[randi() % room_scenes.size()]
+			#room_instance = room_scene.instantiate()
+			#room_instance.position = start_pos + Vector2(x * room_size.x, y * room_size.y)
+			#add_child(room_instance)
+			#room_instance.scale = Vector2(1, 1)  # Ensure normal scale
+			#room_instance.visible = true  # Make sure it's visible
+			#print("Room position: ", room_instance.position)
 func _on_boss_died():
 	Boss = null  # Set Boss to null to prevent further interactions
 	print("Boss has died and is no longer valid!")
