@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="uprm-inso4115-2024-2025-s2-project-dungeon-crawler"
-run/main_scene="res://main_menu.tscn"
+run/main_scene="res://TEST.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
