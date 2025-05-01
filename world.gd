@@ -15,11 +15,7 @@ var room_scenes = []
 @onready var Room2 = $"room/room2"
 @onready var Room3 = $"room/room3"
 @onready var Room4 = $"room/room4"
-# Preload the room scenes correctly as PackedScenes
-@onready var Room_1 = preload("res://Rooms/Room 1.tscn")
-@onready var Room_2 = preload("res://Rooms/Room 2.tscn")
-@onready var Room_3 = preload("res://Rooms/Room 3.tscn")
-@onready var Room_4 = preload("res://Rooms/Room 4.tscn")
+
 
 
 var enemy_attack_cooldowns = {}
@@ -27,27 +23,7 @@ var player_attack_cooldown = 0.0
 var game_over = false	
 
 func _ready():
-	room_scenes = [Room_1]
-	generate_dungeon()
-	#var array_1 = []
-	#for a in range(room_size.x):
-		#array_1.append(0)
-		#
-	#for a in range(room_size.y):
-		#matrix.append(array_1)
-	#
-	# y,x
-	#matrix[0][0] = Room
-	#Room.setxy(0,0)
-	#
-	#matrix[1][0] = Room2
-	#Room2.setxy(1,0)
-	#
-	#matrix[0][1] = Room3
-	#Room3.setxy(0,1)
-	#
-	#matrix[1][1] = Room4
-	#Room.setxy(1,1)
+
 	
 	Boss.connect("boss_died", Callable(self, "_on_boss_died"))
 
@@ -124,6 +100,8 @@ func _process(delta):
 			trigger_game_over(true)
 
 func trigger_game_over(victory: bool):
+	$HowToPlay/HowToPlay.SetGameOver(true)
+	$CanvasLayer/PauseMenuUI.SetGameOver(true)
 	game_over = true
 	get_tree().paused = true  # Pausar el juego
 	print("Before adding game_over_screen:", canvas_layer.get_children())
