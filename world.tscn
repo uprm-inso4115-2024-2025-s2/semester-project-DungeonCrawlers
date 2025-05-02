@@ -170,6 +170,7 @@ texture_filter = 1
 position = Vector2(96, -8)
 
 [node name="MobSpawning" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
 limit_smoothed = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -182,6 +183,7 @@ position = Vector2(9, 2)
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerHealthBar" parent="Player" instance=ExtResource("12_vhryo")]
+visible = false
 position = Vector2(0, 8)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_ggghl")]
